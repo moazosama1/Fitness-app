@@ -7,7 +7,7 @@ abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.gray,
-    fontFamily: "BalooThambi2",
+    fontFamily: ConstKeys.cairoFont,
     colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.mainColorL,

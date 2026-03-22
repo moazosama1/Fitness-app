@@ -1,5 +1,6 @@
 abstract final class ConstKeys {
   static const String kUserLogin = "User_login";
+  static const String cairoFont = "Cairo";
   static const String kUserGuest = "User_Guest";
   static const String kNoToken = "no_token";
   static const String keyRememberMe = "remember_me";

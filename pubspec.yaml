@@ -127,12 +127,12 @@ flutter:
     - family: Outfit
       fonts:
         - asset: assets/fonts/Outfit.ttf
-    - family: IMFellEnglish
+    - family: Cairo
       fonts:
-        - asset: assets/fonts/IMFellEnglish.ttf
-    - family: BalooThambi2
-      fonts:
-        - asset: assets/fonts/BalooThambi2-Regular.ttf
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Medium.ttf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
