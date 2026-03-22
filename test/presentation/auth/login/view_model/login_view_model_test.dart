@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:elevate_super_fitness/core/api_result/api_result.dart';
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/domain/entites/login_entity.dart';
+import 'package:elevate_super_fitness/domain/entites/user_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/login_use_case.dart';
 import 'package:elevate_super_fitness/presentation/auth/login/view_model/login_view_model.dart';
 import 'package:elevate_super_fitness/presentation/auth/login/view_model/login_view_model_event.dart';
@@ -19,27 +19,23 @@ void main() {
     late LoginViewModelState state;
     late LoginViewModel viewModel;
     final requestEntity = LoginDummyData.dummyLoginRequestEntity;
-    final responseEntity = LoginDummyData.dummyLoginResponseEntity;
+    final responseEntity = LoginDummyData.dummyUserEntity;
     final exception = LoginDummyData.dummyException;
     setUp(() {
       loginUseCase = MockLoginUseCase();
       viewModel = LoginViewModel(loginUseCase);
       state = const LoginViewModelState();
-      provideDummy<ApiResult<LoginResponseEntity>>(
-        ApiSuccessResult(responseEntity),
-      );
-      provideDummy<ApiResult<LoginResponseEntity>>(
-        ApiErrorResult(responseEntity),
-      );
+      provideDummy<ApiResult<UserEntity>>(ApiSuccessResult(responseEntity));
+      provideDummy<ApiResult<UserEntity>>(ApiErrorResult(responseEntity));
     });
     blocTest<LoginViewModel, LoginViewModelState>(
       "test login function emit success",
       build: () {
         viewModel.emailController.text = requestEntity.email!;
         viewModel.passwordController.text = requestEntity.password!;
-        when(loginUseCase.call(requestEntity)).thenAnswer(
-          (_) async => ApiSuccessResult<LoginResponseEntity>(responseEntity),
-        );
+        when(
+          loginUseCase.call(requestEntity),
+        ).thenAnswer((_) async => ApiSuccessResult<UserEntity>(responseEntity));
         return viewModel;
       },
       act: (viewModel) => viewModel.doIntent(LoginViewModelSignInEvent()),
@@ -57,9 +53,9 @@ void main() {
       build: () {
         viewModel.emailController.text = requestEntity.email!;
         viewModel.passwordController.text = requestEntity.password!;
-        when(loginUseCase.call(requestEntity)).thenAnswer(
-          (_) async => ApiErrorResult<LoginResponseEntity>(exception),
-        );
+        when(
+          loginUseCase.call(requestEntity),
+        ).thenAnswer((_) async => ApiErrorResult<UserEntity>(exception));
         return viewModel;
       },
       act: (viewModel) => viewModel.doIntent(LoginViewModelSignInEvent()),

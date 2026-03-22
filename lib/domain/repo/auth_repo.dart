@@ -1,6 +1,6 @@
 import 'package:elevate_super_fitness/core/api_result/api_result.dart';
-import 'package:elevate_super_fitness/domain/entites/login_entity.dart';
 import 'package:elevate_super_fitness/domain/entites/requests/login_request_entity.dart';
+import 'package:elevate_super_fitness/domain/entites/user_entity.dart';
 import '../entites/requests/register_request_entity.dart';
 import '../entites/requests/email_verification_request_entity.dart';
 import '../entites/requests/forget_password_request_entity.dart';
@@ -10,10 +10,8 @@ import '../entites/forget_password_response_entity.dart';
 import '../entites/reset_password_response_entity.dart';
 
 abstract interface class AuthRepo {
-  Future<ApiResult<LoginResponseEntity>> login({
-    required LoginRequestEntity request,
-  });
-  Future<ApiResult<String>> register(RegisterRequestEntity request);
+  Future<ApiResult<UserEntity>> login({required LoginRequestEntity request});
+  Future<ApiResult<UserEntity>> register(RegisterRequestEntity request);
   Future<ApiResult<ForgetPasswordResponseEntity>> forgetPassword(
     ForgetPasswordRequestEntity request,
   );

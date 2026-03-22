@@ -52,9 +52,13 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
 
   Future<void> _resendCode(String email) async {
     if (email.isEmpty) return;
-
-    // emit loading
-    emit(state.copyWith(requestEmailState: BaseState.loading()));
+    emit(
+      state.copyWith(
+        requestEmailState: BaseState.loading(),
+        verifyCodeState: null,
+        resetPasswordState: null,
+      ),
+    );
 
     final result = await _forgetPasswordUseCase(
       ForgetPasswordRequestEntity(email: email),
@@ -62,13 +66,21 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
 
     switch (result) {
       case ApiSuccessResult<ForgetPasswordResponseEntity>():
-        emit(state.copyWith(requestEmailState: BaseState.success(result.data)));
+        emit(
+          state.copyWith(
+            requestEmailState: BaseState.success(result.data),
+            verifyCodeState: null,
+            resetPasswordState: null,
+          ),
+        );
         break;
 
       case ApiErrorResult<ForgetPasswordResponseEntity>():
         emit(
           state.copyWith(
             requestEmailState: BaseState.error(result.errorMessage),
+            verifyCodeState: null,
+            resetPasswordState: null,
           ),
         );
         break;
@@ -77,23 +89,35 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
 
   Future<void> _forgetPassword(String email) async {
     if (email.isEmpty) return;
-
-    // emit loading
-    emit(state.copyWith(requestEmailState: BaseState.loading()));
+    emit(
+      state.copyWith(
+        requestEmailState: BaseState.loading(),
+        verifyCodeState: null,
+        resetPasswordState: null,
+      ),
+    );
 
     final result = await _forgetPasswordUseCase(
-      ForgetPasswordRequestEntity(email: emailController.text),
+      ForgetPasswordRequestEntity(email: email),
     );
 
     switch (result) {
       case ApiSuccessResult<ForgetPasswordResponseEntity>():
-        emit(state.copyWith(requestEmailState: BaseState.success(result.data)));
+        emit(
+          state.copyWith(
+            requestEmailState: BaseState.success(result.data),
+            verifyCodeState: null,
+            resetPasswordState: null,
+          ),
+        );
         break;
 
       case ApiErrorResult<ForgetPasswordResponseEntity>():
         emit(
           state.copyWith(
             requestEmailState: BaseState.error(result.errorMessage),
+            verifyCodeState: null,
+            resetPasswordState: null,
           ),
         );
         break;
@@ -102,9 +126,12 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
 
   Future<void> _verifyResetCode(String otbCode) async {
     if (otbCode.isEmpty) return;
-
-    // emit loading
-    emit(state.copyWith(verifyCodeState: BaseState.loading()));
+    emit(
+      state.copyWith(
+        verifyCodeState: BaseState.loading(),
+        resetPasswordState: null,
+      ),
+    );
 
     final result = await _emailVerificationUseCase(
       EmailVerificationRequestEntity(resetCode: otbCode),
@@ -125,8 +152,6 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
 
   Future<void> _resetPassword(String newPassword) async {
     if (newPassword.isEmpty) return;
-
-    // emit loading
     emit(state.copyWith(resetPasswordState: BaseState.loading()));
 
     final email = emailController.text.trim();
@@ -134,7 +159,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
     final result = await _resetPasswordUseCase(
       ResetPasswordRequestEntity(
         email: email,
-        newPassword: newPasswordController.text,
+        newPassword: newPassword,
       ),
     );
     switch (result) {
@@ -155,6 +180,8 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState> {
   Future<void> close() {
     resetCodeController.dispose();
     emailController.dispose();
+    newPasswordController.dispose();
+    confirmPasswordController.dispose();
     return super.close();
   }
 }

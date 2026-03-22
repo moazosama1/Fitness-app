@@ -1,28 +1,14 @@
 part of 'register_view_model.dart';
 
 final class RegisterState extends Equatable {
-  final bool isLoading;
-  final String? errorMessage;
-  final bool isSuccessful;
+  final BaseState<UserEntity>? registerState;
 
-  const RegisterState({
-    this.isLoading = false,
-    this.errorMessage,
-    this.isSuccessful = false,
-  });
+  const RegisterState({this.registerState});
 
-  RegisterState copyWith({
-    bool? isLoading,
-    String? errorMessage,
-    bool? isSuccessful,
-  }) {
-    return RegisterState(
-      isLoading: isLoading ?? this.isLoading,
-      errorMessage: errorMessage ?? this.errorMessage,
-      isSuccessful: isSuccessful ?? this.isSuccessful,
-    );
+  RegisterState copyWith({BaseState<UserEntity>? registerState}) {
+    return RegisterState(registerState: registerState ?? this.registerState);
   }
 
   @override
-  List<Object?> get props => [isLoading, errorMessage, isSuccessful];
+  List<Object?> get props => [registerState];
 }

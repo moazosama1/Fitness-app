@@ -79,7 +79,7 @@ class RegisterFormWidget extends StatelessWidget {
                   builder: (context, value, child) {
                     return TextFormField(
                       controller: registerViewModel.passwordController,
-                      validator: Validations.validatePassword,
+                      validator: Validations.validateAuthPassword,
                       obscureText: !value,
                       decoration: InputDecoration(
                         prefixIcon: Icon(

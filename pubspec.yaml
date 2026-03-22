@@ -158,6 +158,16 @@ flutter_intl:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/icons/logo.png"
+  image_path: "assets/images/logo.png"
   min_sdk_android: 21
   remove_alpha_ios: true
+
+
+flutter_assets:
+  assets_path: assets/dummy_image/
+  output_path: lib/core/constant/
+  filename: constant_dummy_image.dart
+  field_prefix:
+  ignore_comments: true
+  classname: AppDummyImage
+  style: camel-case

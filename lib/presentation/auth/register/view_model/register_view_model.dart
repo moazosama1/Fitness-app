@@ -1,7 +1,9 @@
 import 'package:elevate_super_fitness/core/api_result/api_result.dart';
+import 'package:elevate_super_fitness/core/api_result/base_state.dart';
 import 'package:elevate_super_fitness/core/enums/gender_enum.dart';
 import 'package:elevate_super_fitness/core/enums/goal_enum.dart';
 import 'package:elevate_super_fitness/domain/entites/requests/register_request_entity.dart';
+import 'package:elevate_super_fitness/domain/entites/user_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/register_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
@@ -133,7 +135,7 @@ class RegisterViewModel extends Cubit<RegisterState> {
   }
 
   Future<void> _register() async {
-    emit(const RegisterState(isLoading: true));
+    emit(state.copyWith(registerState: BaseState.loading()));
     final result = await _registerUseCase(
       RegisterRequestEntity(
         firstName: firstNameController.text,
@@ -150,12 +152,12 @@ class RegisterViewModel extends Cubit<RegisterState> {
       ),
     );
     switch (result) {
-      case ApiSuccessResult<String>():
-        emit(state.copyWith(isSuccessful: true, isLoading: false));
+      case ApiSuccessResult<UserEntity>():
+        emit(state.copyWith(registerState: BaseState.success(result.data)));
         break;
-      case ApiErrorResult<String>():
+      case ApiErrorResult<UserEntity>():
         emit(
-          state.copyWith(errorMessage: result.errorMessage, isLoading: false),
+          state.copyWith(registerState: BaseState.error(result.errorMessage)),
         );
         break;
     }

@@ -1,7 +1,7 @@
 import 'package:elevate_super_fitness/core/api_result/api_result.dart';
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/domain/entites/login_entity.dart';
 import 'package:elevate_super_fitness/domain/entites/requests/login_request_entity.dart';
+import 'package:elevate_super_fitness/domain/entites/user_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/login_use_case.dart';
 import 'package:elevate_super_fitness/presentation/auth/login/view_model/login_view_model_event.dart';
 import 'package:equatable/equatable.dart';
@@ -41,9 +41,9 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
       ),
     );
     switch (result) {
-      case ApiSuccessResult<LoginResponseEntity>():
+      case ApiSuccessResult<UserEntity>():
         emit(state.copyWith(loginState: BaseState.success(result.data)));
-      case ApiErrorResult<LoginResponseEntity>():
+      case ApiErrorResult<UserEntity>():
         emit(state.copyWith(loginState: BaseState.error(result.errorMessage)));
     }
   }

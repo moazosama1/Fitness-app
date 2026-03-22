@@ -55,7 +55,7 @@ class SectionLoginFormFiled extends StatelessWidget {
             builder: (context, value, child) => SizedBox(
               height: 36.h,
               child: TextFormField(
-                validator: Validations.validatePassword,
+                validator: Validations.validateAuthPassword,
                 controller: cubit.passwordController,
                 key: const Key(WidgetsKeys.kLoginScreenPasswordFormFiledKey),
                 style: theme.textTheme.bodyMedium?.copyWith(

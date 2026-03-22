@@ -1,5 +1,5 @@
 import 'package:elevate_super_fitness/core/api_result/api_result.dart';
-import 'package:elevate_super_fitness/domain/entites/login_entity.dart';
+import 'package:elevate_super_fitness/domain/entites/user_entity.dart';
 import 'package:elevate_super_fitness/domain/repo/auth_repo.dart';
 import 'package:elevate_super_fitness/domain/use_cases/login_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,7 +13,7 @@ import 'login_use_case_test.mocks.dart';
 void main() {
   group("test Login use case", () {
     final requestEntity = LoginDummyData.dummyLoginRequestEntity;
-    final responseEntity = LoginDummyData.dummyLoginResponseEntity;
+    final responseEntity = LoginDummyData.dummyUserEntity;
     final dioError = LoginDummyData.dummyDioException;
     final exception = LoginDummyData.dummyException;
     late MockAuthRepo mockAuthRepo;
@@ -21,10 +21,8 @@ void main() {
     setUp(() {
       mockAuthRepo = MockAuthRepo();
       loginUseCase = LoginUseCase(mockAuthRepo);
-      provideDummy<ApiResult<LoginResponseEntity>>(
-        ApiSuccessResult(responseEntity),
-      );
-      provideDummy<ApiResult<LoginResponseEntity>>(ApiErrorResult(dioError));
+      provideDummy<ApiResult<UserEntity>>(ApiSuccessResult(responseEntity));
+      provideDummy<ApiResult<UserEntity>>(ApiErrorResult(dioError));
     });
 
     test("test use case success result", () async {
@@ -37,16 +35,14 @@ void main() {
       final result = await loginUseCase.call(requestEntity);
       //Assert
       expect(result, isA<ApiSuccessResult>());
-      expect(
-        (result as ApiSuccessResult<LoginResponseEntity>).data.email,
-        equals(responseEntity.email),
-      );
-      expect(result.data.firstName, equals(responseEntity.firstName));
+      final successResult = result as ApiSuccessResult<UserEntity>;
+      expect(successResult.data.email, equals(responseEntity.email));
+      expect(successResult.data.firstName, equals(responseEntity.firstName));
       verify(mockAuthRepo.login(request: requestEntity)).called(1);
     });
     test("test use case dioError", () async {
       //Arrange
-      final expectResult = ApiErrorResult<LoginResponseEntity>(dioError);
+      final expectResult = ApiErrorResult<UserEntity>(dioError);
       when(
         mockAuthRepo.login(request: requestEntity),
       ).thenAnswer((_) async => expectResult);
@@ -55,7 +51,7 @@ void main() {
       //Assert
       expect(result, isA<ApiErrorResult>());
       expect(
-        (result as ApiErrorResult<LoginResponseEntity>).errorMessage,
+        (result as ApiErrorResult).errorMessage,
         equals(contains(dioError.message)),
       );
 
@@ -63,7 +59,7 @@ void main() {
     });
     test("test use case Exception", () async {
       //Arrange
-      final expectResult = ApiErrorResult<LoginResponseEntity>(exception);
+      final expectResult = ApiErrorResult<UserEntity>(exception);
       when(
         mockAuthRepo.login(request: requestEntity),
       ).thenAnswer((_) async => expectResult);
@@ -71,10 +67,7 @@ void main() {
       final result = await loginUseCase.call(requestEntity);
       //Assert
       expect(result, isA<ApiErrorResult>());
-      expect(
-        (result as ApiErrorResult<LoginResponseEntity>).error,
-        equals(exception),
-      );
+      expect((result as ApiErrorResult).error, equals(exception));
       verify(mockAuthRepo.login(request: requestEntity)).called(1);
     });
   });

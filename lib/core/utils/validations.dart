@@ -33,6 +33,16 @@ class Validations {
     }
   }
 
+  static String? validateAuthPassword(String? val) {
+    if (val == null || val.trim().isEmpty) {
+      return AppLocalizations().passwordIsRequired;
+    } else if (val.trim().length < 8) {
+      return AppLocalizations().passwordNotMatched;
+    } else {
+      return null;
+    }
+  }
+
   static String? validateConfirmPassword(String? val, String? password) {
     if (val == null || val.isEmpty) {
       return AppLocalizations().passwordIsRequired;
@@ -67,7 +77,7 @@ class Validations {
   static String? validateSixNumber(String? val) {
     if (val == null || val.isEmpty) {
       return AppLocalizations().thisFieldIsRequired;
-    } else if (val.length < 6 && val.length > 6) {
+    } else if (val.length != 6) {
       return AppLocalizations().thisFieldIsRequired;
     } else {
       return null;

@@ -5,6 +5,8 @@ import 'package:elevate_super_fitness/domain/entites/reset_password_response_ent
 import 'package:equatable/equatable.dart';
 
 class ForgetPasswordState extends Equatable {
+  static const _unset = Object();
+
   final BaseState<ForgetPasswordResponseEntity>? requestEmailState;
   final BaseState<EmailVerificationEntity>? verifyCodeState;
   final BaseState<ResetPasswordResponseEntity>? resetPasswordState;
@@ -16,14 +18,20 @@ class ForgetPasswordState extends Equatable {
   });
 
   ForgetPasswordState copyWith({
-    BaseState<ForgetPasswordResponseEntity>? requestEmailState,
-    BaseState<EmailVerificationEntity>? verifyCodeState,
-    BaseState<ResetPasswordResponseEntity>? resetPasswordState,
+    Object? requestEmailState = _unset,
+    Object? verifyCodeState = _unset,
+    Object? resetPasswordState = _unset,
   }) {
     return ForgetPasswordState(
-      requestEmailState: requestEmailState ?? this.requestEmailState,
-      verifyCodeState: verifyCodeState ?? this.verifyCodeState,
-      resetPasswordState: resetPasswordState ?? this.resetPasswordState,
+      requestEmailState: requestEmailState == _unset
+          ? this.requestEmailState
+          : requestEmailState as BaseState<ForgetPasswordResponseEntity>?,
+      verifyCodeState: verifyCodeState == _unset
+          ? this.verifyCodeState
+          : verifyCodeState as BaseState<EmailVerificationEntity>?,
+      resetPasswordState: resetPasswordState == _unset
+          ? this.resetPasswordState
+          : resetPasswordState as BaseState<ResetPasswordResponseEntity>?,
     );
   }
 

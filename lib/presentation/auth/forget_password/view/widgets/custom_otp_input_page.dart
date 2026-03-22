@@ -17,7 +17,6 @@ class CustomOtpInputPage extends StatefulWidget {
 }
 
 class _CustomOtpInputPageState extends State<CustomOtpInputPage> {
-  final _otpControllers = TextEditingController();
   final GlobalKey<FormState> otbCOdeFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -63,7 +62,7 @@ class _CustomOtpInputPageState extends State<CustomOtpInputPage> {
               children: [
                 PinCodeTextField(
                   hintStyle: TextStyle(color: AppColors.mainColorL),
-                  controller: _otpControllers,
+                  controller: widget.viewModel.resetCodeController,
                   backgroundColor: Colors.transparent,
                   appContext: context,
                   length: 6,
@@ -102,7 +101,9 @@ class _CustomOtpInputPageState extends State<CustomOtpInputPage> {
                     onPressed: () {
                       if (otbCOdeFormKey.currentState!.validate()) {
                         widget.viewModel.doIntent(
-                          VerifyResetCodeEvent(otpCode: _otpControllers.text),
+                          VerifyResetCodeEvent(
+                            otpCode: widget.viewModel.resetCodeController.text,
+                          ),
                         );
                       }
                     },

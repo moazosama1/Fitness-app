@@ -68,7 +68,7 @@ class _CreateNewPasswordContainerState
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextFormField(
-                  validator: Validations.validatePassword,
+                  validator: Validations.validateAuthPassword,
                   controller:
                       widget.forgetPasswordViewModel.newPasswordController,
                   style: theme.textTheme.bodyMedium?.copyWith(
