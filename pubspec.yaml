@@ -2,7 +2,7 @@ name: elevate_super_fitness
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -65,8 +65,8 @@ dependencies:
   firebase_core: ^4.2.0
   firebase_ai: ^3.4.0
   animated_text_kit: ^4.3.0
-  objectbox: ^4.3.1
-  objectbox_flutter_libs: ^4.3.1
+  objectbox: ^5.2.0
+  objectbox_flutter_libs: ^5.2.0
   path_provider: ^2.1.5
   auto_mappr_annotation: ^2.3.0
   readmore: ^3.0.0
@@ -79,11 +79,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   intl_utils: ^2.8.2
-  retrofit_generator: ^10.0.1
-  build_runner: ^2.6.0
-  json_serializable: ^6.10.0
-  injectable_generator: ^2.8.1
-  objectbox_generator: ^4.3.1
+  retrofit_generator: ^10.2.3
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.6
+  injectable_generator: ^2.7.0
+  objectbox_generator: ^5.2.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -91,7 +91,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-  auto_mappr: ^2.10.0
+  auto_mappr: ^2.14.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
