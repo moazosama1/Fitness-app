@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
           title: AppLocalizations().appName,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
+          scrollBehavior: MyCustomScrollBehavior(),
           onGenerateRoute: AppRouter.onGenerateRoute,
           initialRoute: RouteNames.splash,
           localizationsDelegates: [
@@ -60,4 +61,11 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
 }
