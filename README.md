@@ -14,7 +14,7 @@ Elevate Super Fitness is a cross-platform mobile app that helps users achieve th
 
 * A smart AI coach powered by Gemini for personalized advice.
 
-* Local database management with ObjectBox for offline support.
+* In-memory test data flow for local conversation simulation.
 
 * Responsive UI that adapts to different screen sizes using Flutter ScreenUtil.
 
@@ -31,9 +31,9 @@ Tech Stack
 
 * **Dependency Injection**: Injectable
 
-* **Database**: ObjectBox (local storage)
+* **Database**: In-memory storage (test mode)
 
-* **AI Integration**: Firebase AI, Gemini 2.5 Flash
+* **AI Integration**: Smart Coach local response engine (test mode)
 
 * **Routing**: Navigator
 
@@ -54,9 +54,9 @@ The project follows **Clean Architecture** principles to ensure separation of co
 
 * **Domain Layer**: Contains business logic, entities, use cases, and repositories (abstract interfaces).
 
-* **Data Layer**: Implements repositories with data sources (e.g., API services via Retrofit, local DB via ObjectBox).
+* **Data Layer**: Implements repositories with data sources (e.g., API services via Retrofit and local test stubs).
 
-* **Core Layer**: Utilities, constants, and shared services (e.g., Gemini AI service, ObjectBox service).
+* **Core Layer**: Utilities, constants, and shared services (e.g., Gemini AI service and local chat memory service).
 
 This structure promotes loose coupling and makes it easy to swap data sources or add features without affecting the UI.
 
@@ -77,7 +77,7 @@ Features
 
 * **Media Integration**: YouTube video playback for exercise demos.
 
-* **Offline Support**: Local caching of data and conversations with ObjectBox.
+* **Offline Support**: Local conversation simulation in test mode.
 
 * **Localization**: Multi-language support with generated ARB files.
 
@@ -111,7 +111,7 @@ Here's a high-level overview of the project structure:
 ├── ios/                    # iOS-specific files
 ├── lib/                    # Main Dart code
 │   ├── api/                # API models and services (Retrofit-generated)
-│   ├── core/               # Utilities, constants, services (e.g., Gemini, ObjectBox)
+│   ├── core/               # Utilities, constants, services (e.g., Gemini, local memory)
 │   ├── data/               # Data sources and repositories
 │   ├── domain/             # Entities, use cases
 │   ├── generated/          # Auto-generated files (e.g., l10n, JSON serializers)
@@ -138,10 +138,10 @@ Here's a high-level overview of the project structure:
 Contributors
 ------------
 
-- [Mohamed Hossam El-Bably](https://github.com/Bablu521)
-- [Youssef Mohamed](https://github.com/youssefmdev22)
-- [Moaz Osama](https://github.com/moazosama1)
-- [Mohamed Naeem](https://github.com/mohamedna3eem)
+* [Mohamed Hossam El-Bably](https://github.com/Bablu521)
+* [Youssef Mohamed](https://github.com/youssefmdev22)
+* [Moaz Osama](https://github.com/moazosama1)
+* [Mohamed Naeem](https://github.com/mohamedna3eem)
 
 Screenshots
 --------------

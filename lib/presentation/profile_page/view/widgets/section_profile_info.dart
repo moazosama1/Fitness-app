@@ -6,7 +6,7 @@ import 'package:elevate_super_fitness/presentation/main_home/view_model/main_hom
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class SectionProfileInfo extends StatelessWidget {
   const SectionProfileInfo({super.key});
@@ -53,3 +53,4 @@ class SectionProfileInfo extends StatelessWidget {
     );
   }
 }
+

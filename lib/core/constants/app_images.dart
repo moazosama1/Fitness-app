@@ -17,8 +17,8 @@ abstract class AppImages {
   static const String homeBgImage = "$_imagesPath/home_bg.png";
   static const String authBg = "$_imagesPath/auth_bg.png";
   static const String chatBg = "$_imagesPath/chat_bg.jpg"; 
-  static const String userImage = "$_imagesPath/user_image.jpg";
-  static const String aiImage = "$_imagesPath/ai_image.jpg";
+  static const String userImage = "$_imagesPath/user_photo.png";
+  static const String aiImage = "$_imagesPath/ropot.png";
   static const String maleImage = "$_imagesPath/male.svg";
   static const String femaleImage = "$_imagesPath/female.svg";
   static const String chestExerciseImage = "$_imagesPath/chest_exercise.jpg";

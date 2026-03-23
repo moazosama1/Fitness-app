@@ -4,7 +4,7 @@ import 'package:elevate_super_fitness/presentation/edit_profile/view/widget/edit
 import 'package:elevate_super_fitness/presentation/edit_profile/view/widget/edit_profile_user_body_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/app_colors.dart';
@@ -100,3 +100,4 @@ class EditProfileViewBody extends StatelessWidget {
     );
   }
 }
+

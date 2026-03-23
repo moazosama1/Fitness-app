@@ -5,7 +5,7 @@ import 'package:elevate_super_fitness/presentation/auth/register/view/widgets/re
 import 'package:elevate_super_fitness/presentation/auth/register/view/widgets/register_gender_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../../core/custom_widget/custom_dialog.dart';
 import '../../../../../core/di/di.dart';
@@ -246,3 +246,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
+

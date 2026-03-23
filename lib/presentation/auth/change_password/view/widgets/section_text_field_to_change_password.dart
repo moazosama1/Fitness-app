@@ -9,7 +9,7 @@ import 'package:elevate_super_fitness/presentation/auth/change_password/view_mod
 import 'package:elevate_super_fitness/presentation/auth/change_password/view_model/change_password_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SectionTextFieldToChangePassword extends StatelessWidget {
@@ -197,3 +197,4 @@ class SectionTextFieldToChangePassword extends StatelessWidget {
     );
   }
 }
+

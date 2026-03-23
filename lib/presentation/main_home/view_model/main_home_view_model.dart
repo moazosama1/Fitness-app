@@ -1,6 +1,5 @@
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/domain/entites/user_info_entity.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_user_logged_data_use_case.dart';
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_events.dart';
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_states.dart';
@@ -10,9 +9,9 @@ import 'package:injectable/injectable.dart';
 
 @singleton
 class MainHomeViewModel extends Cubit<MainHomeStates> {
-  MainHomeViewModel(this._userLoggedDataUseCase)
+  MainHomeViewModel(GetUserLoggedDataUseCase userLoggedDataUseCase)
     : super(const MainHomeStates());
-  final GetUserLoggedDataUseCase _userLoggedDataUseCase;
+  static const Duration _fakeDelay = Duration(milliseconds: 350);
 
   final PageController pageController = PageController();
   String? selectedTabIdWorkouts = "";
@@ -35,13 +34,8 @@ class MainHomeViewModel extends Cubit<MainHomeStates> {
 
   Future<void> _getUserData() async {
     emit(state.copyWith(userInfo: BaseState.loading()));
-    final result = await _userLoggedDataUseCase.call();
-    switch (result) {
-      case ApiSuccessResult<UserInfoEntity>():
-        emit(state.copyWith(userInfo: BaseState.success(result.data)));
-      case ApiErrorResult<UserInfoEntity>():
-        emit(state.copyWith(userInfo: BaseState.error(result.errorMessage)));
-    }
+    await Future.delayed(_fakeDelay);
+    emit(state.copyWith(userInfo: BaseState.success(AppFakeData.profileUser)));
   }
 
   void _bottomNavBarOnTap(int index) {

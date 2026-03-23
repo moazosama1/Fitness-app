@@ -4,7 +4,7 @@ import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dar
 import 'package:elevate_super_fitness/domain/entites/muscle_group_details_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ListOfUpcomingItem extends StatelessWidget {
   const ListOfUpcomingItem({super.key, this.musclesGroupDetailsById});
@@ -48,3 +48,4 @@ class ListOfUpcomingItem extends StatelessWidget {
     );
   }
 }
+

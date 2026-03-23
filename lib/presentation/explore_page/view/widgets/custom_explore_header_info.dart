@@ -1,12 +1,12 @@
+import 'package:elevate_super_fitness/core/constants/constant_dummy_image.dart';
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
-import 'package:elevate_super_fitness/core/custom_widget/custom_cached_network_image.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_events.dart';
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_states.dart';
 import 'package:elevate_super_fitness/presentation/main_home/view_model/main_home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomExploreHeaderInfo extends StatelessWidget {
@@ -26,7 +26,7 @@ class CustomExploreHeaderInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${local.hi} ${state.userInfo?.data?.firstName ?? ""} ,",
+                  "${local.hi} , John",
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: theme.colorScheme.onSecondary,
                   ),
@@ -67,10 +67,10 @@ class CustomExploreHeaderInfo extends StatelessWidget {
                   child: ClipRRect(
                     key: const Key(WidgetsKeys.kExploreScreenHeaderImageKey),
                     borderRadius: BorderRadiusGeometry.circular(18.sp),
-                    child: CustomCachedNetworkImage(
-                      imageUrl: state.userInfo?.data?.photo ?? "",
-                      width: 36.w,
-                      height: 36.h,
+                    child: const Image(
+                      image: AssetImage(AppDummyImage.dummyImageFitness10),
+                      width: 36,
+                      height: 36,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -83,3 +83,4 @@ class CustomExploreHeaderInfo extends StatelessWidget {
     );
   }
 }
+

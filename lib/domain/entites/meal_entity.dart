@@ -3,7 +3,7 @@ class MealEntity {
   final String? strMealThumb;
   final String? idMeal;
 
-  MealEntity({
+  const MealEntity({
     required this.strMeal,
     required this.strMealThumb,
     required this.idMeal,

@@ -19,6 +19,8 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
     switch (event) {
       case LoginViewModelSignInEvent():
         _login();
+      case LoginViewModelSignInWithDummyEmailEvent():
+        _loginWithDummyEmail();
       case LoginViewModelVisiblePasswordEvent():
         _viewPassword();
     }
@@ -27,8 +29,16 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
   ValueNotifier<bool> passwordVisible = ValueNotifier(true);
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   void _viewPassword() {
     passwordVisible.value = !passwordVisible.value;
+  }
+
+  Future<void> _loginWithDummyEmail() async {
+    final stamp = DateTime.now().millisecondsSinceEpoch;
+    emailController.text = 'dummy_$stamp@fake.com';
+    passwordController.text = 'password123';
+    await _login();
   }
 
   Future<void> _login() async {

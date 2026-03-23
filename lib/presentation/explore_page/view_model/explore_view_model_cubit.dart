@@ -1,6 +1,6 @@
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
 import 'package:elevate_super_fitness/domain/entites/meals_categories_response_entity.dart';
 import 'package:elevate_super_fitness/domain/entites/muscle_group_details_entity.dart';
 import 'package:elevate_super_fitness/domain/entites/muscles_group_response_entity.dart';
@@ -22,18 +22,14 @@ part 'explore_view_model_state.dart';
 @injectable
 class ExploreViewModelCubit extends Cubit<ExploreViewModelState> {
   ExploreViewModelCubit(
-    this._userLoggedDataUseCase,
-    this._getRandomMusclesUseCase,
-    this._allMusclesGroupsUseCase,
-    this._getAllMusclesByMuscleGroupIdUseCase,
-    this._getAllMealsCategoriesUseCase,
+    GetUserLoggedDataUseCase userLoggedDataUseCase,
+    GetRandomMusclesUseCase getRandomMusclesUseCase,
+    GetAllMusclesGroupsUseCase allMusclesGroupsUseCase,
+    GetAllMusclesByMuscleGroupIdUseCase getAllMusclesByMuscleGroupIdUseCase,
+    GetAllMealsCategoriesUseCase getAllMealsCategoriesUseCase,
   ) : super(const ExploreViewModelState());
-  final GetUserLoggedDataUseCase _userLoggedDataUseCase;
-  final GetRandomMusclesUseCase _getRandomMusclesUseCase;
-  final GetAllMusclesGroupsUseCase _allMusclesGroupsUseCase;
-  final GetAllMusclesByMuscleGroupIdUseCase
-  _getAllMusclesByMuscleGroupIdUseCase;
-  final GetAllMealsCategoriesUseCase _getAllMealsCategoriesUseCase;
+  static const Duration _fakeDelay = Duration(milliseconds: 450);
+
   String selectedId = "";
   ValueNotifier<int> selectedCategory = ValueNotifier<int>(0);
   final categories = [
@@ -64,60 +60,73 @@ class ExploreViewModelCubit extends Cubit<ExploreViewModelState> {
 
   Future<void> _getRandomMuscles() async {
     emit(state.copyWith(randomMuscles: BaseState.loading()));
-    final result = await _getRandomMusclesUseCase.call();
-    switch (result) {
-      case ApiSuccessResult<MusclesResponseEntity>():
-        emit(state.copyWith(randomMuscles: BaseState.success(result.data)));
-      case ApiErrorResult<MusclesResponseEntity>():
-        emit(
-          state.copyWith(randomMuscles: BaseState.error(result.errorMessage)),
-        );
-    }
+    await Future.delayed(_fakeDelay);
+    emit(
+      state.copyWith(
+        randomMuscles: BaseState.success(
+          MusclesResponseEntity(
+            message: 'loaded from fake data',
+            totalMuscles: AppFakeData.exploreRecommendationToDay.length,
+            muscles: AppFakeData.exploreRecommendationToDay,
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> _getAllMusclesGroups() async {
     emit(state.copyWith(musclesGroup: BaseState.loading()));
-    final result = await _allMusclesGroupsUseCase.call();
-    switch (result) {
-      case ApiSuccessResult<MusclesGroupResponseEntity>():
-        emit(state.copyWith(musclesGroup: BaseState.success(result.data)));
-        selectedId = result.data.musclesGroup?.first.id ?? "";
-      case ApiErrorResult<MusclesGroupResponseEntity>():
-        emit(
-          state.copyWith(musclesGroup: BaseState.error(result.errorMessage)),
-        );
-    }
+    await Future.delayed(_fakeDelay);
+    selectedId = AppFakeData.exploreUpcomingGroups.first.id ?? '';
+    emit(
+      state.copyWith(
+        musclesGroup: BaseState.success(
+          const MusclesGroupResponseEntity(
+            message: 'loaded from fake data',
+            musclesGroup: AppFakeData.exploreUpcomingGroups,
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> _getAllMusclesByMuscleGroupId(String selectedI) async {
     emit(state.copyWith(musclesGroupDetailsById: BaseState.loading()));
-    final result = await _getAllMusclesByMuscleGroupIdUseCase.call(selectedId);
-    switch (result) {
-      case ApiSuccessResult<MuscleGroupDetailsEntity>():
-        emit(
-          state.copyWith(
-            musclesGroupDetailsById: BaseState.success(result.data),
+    await Future.delayed(_fakeDelay);
+    final items =
+      AppFakeData.exploreUpcomingByGroup[selectedI] ??
+      AppFakeData.exploreUpcomingByGroup.values.first;
+    final groupName =
+      AppFakeData.exploreUpcomingGroups
+            .where((g) => g.id == selectedI)
+            .map((g) => g.name)
+            .firstWhere((name) => name != null, orElse: () => 'Workout') ??
+        'Workout';
+    emit(
+      state.copyWith(
+        musclesGroupDetailsById: BaseState.success(
+          MuscleGroupDetailsEntity(
+            message: 'loaded from fake data',
+            muscleGroupId: selectedI,
+            muscleGroupName: groupName,
+            musclesEntity: items,
           ),
-        );
-      case ApiErrorResult<MuscleGroupDetailsEntity>():
-        emit(
-          state.copyWith(
-            musclesGroupDetailsById: BaseState.error(result.errorMessage),
-          ),
-        );
-    }
+        ),
+      ),
+    );
   }
 
   Future<void> _getAllMealsCategories() async {
     emit(state.copyWith(mealsCategory: BaseState.loading()));
-    final result = await _getAllMealsCategoriesUseCase.call();
-    switch (result) {
-      case ApiSuccessResult<MealsCategoriesResponseEntity>():
-        emit(state.copyWith(mealsCategory: BaseState.success(result.data)));
-      case ApiErrorResult<MealsCategoriesResponseEntity>():
-        emit(
-          state.copyWith(mealsCategory: BaseState.error(result.errorMessage)),
-        );
-    }
+    await Future.delayed(_fakeDelay);
+    emit(
+      state.copyWith(
+        mealsCategory: BaseState.success(
+          const MealsCategoriesResponseEntity(
+            categories: AppFakeData.exploreRecommendationForYou,
+          ),
+        ),
+      ),
+    );
   }
 }

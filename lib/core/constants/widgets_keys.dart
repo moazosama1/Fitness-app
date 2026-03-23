@@ -19,6 +19,8 @@ abstract final class WidgetsKeys {
       "login_screen_prefix_icon_password_form_filed_key";
   static const String kLoginScreenTextButtonForgetPasswordKey =
       "login_screen_text_button_password_form_filed_key";
+  static const String kLoginScreenDummyEmailButton =
+      "login_screen_dummy_email_button";
   static const String kLoginScreenAnotherButtonToLoginKey =
       "login_screen_another_button_to_login_key";
   static const String kLoginScreenTextRichKey = "login_screen_text_rich_key";

@@ -1,4 +1,4 @@
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
 import 'package:elevate_super_fitness/domain/entites/meal_category_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_meals_categories_use_case.dart';
 import 'package:equatable/equatable.dart';
@@ -14,12 +14,11 @@ part 'food_state.dart';
 
 @injectable
 class FoodViewModel extends Cubit<FoodState> {
-  final GetMealsCategoriesUseCase _getMealsCategoriesUseCase;
-  final GetMealsByCategoryUseCase _getMealsByCategoryUseCase;
+  static const Duration _fakeDelay = Duration(milliseconds: 350);
 
   FoodViewModel(
-    this._getMealsCategoriesUseCase,
-    this._getMealsByCategoryUseCase,
+    GetMealsCategoriesUseCase getMealsCategoriesUseCase,
+    GetMealsByCategoryUseCase getMealsByCategoryUseCase,
   ) : super(const FoodState());
 
   ValueNotifier<int> selectedTabIndex = ValueNotifier(0);
@@ -37,31 +36,30 @@ class FoodViewModel extends Cubit<FoodState> {
 
   Future<void> _getMealsCategories() async {
     emit(const FoodState(isLoading: true));
-    final result = await _getMealsCategoriesUseCase();
-    switch (result) {
-      case ApiSuccessResult<List<MealCategoryEntity>>():
-        emit(state.copyWith(mealsCategoriesList: result.data, isLoading: false));
-        _getMealsByCategory(0);
-        break;
-      case ApiErrorResult<List<MealCategoryEntity>>():
-        emit(state.copyWith(errorMessage: result.errorMessage, isLoading: false));
-        break;
+    await Future.delayed(_fakeDelay);
+    emit(
+      state.copyWith(
+        mealsCategoriesList: AppFakeData.foodCategories,
+        isLoading: false,
+      ),
+    );
+    if (AppFakeData.foodCategories.isNotEmpty) {
+      _getMealsByCategory(0);
     }
   }
 
   Future<void> _getMealsByCategory(int index) async {
     _changeTab(index);
     emit(state.copyWith(isMealsLoading: true));
-    final category = state.mealsCategoriesList![index].strCategory ?? "";
-    final result = await _getMealsByCategoryUseCase(category);
-    switch (result) {
-      case ApiSuccessResult<List<MealEntity>>():
-        emit(state.copyWith(mealsList: result.data, isMealsLoading: false));
-        break;
-      case ApiErrorResult<List<MealEntity>>():
-        emit(state.copyWith(errorMessage: result.errorMessage, isMealsLoading: false));
-        break;
+    await Future.delayed(_fakeDelay);
+    final categories = state.mealsCategoriesList ?? const <MealCategoryEntity>[];
+    if (categories.isEmpty || index < 0 || index >= categories.length) {
+      emit(state.copyWith(mealsList: const [], isMealsLoading: false));
+      return;
     }
+    final category = categories[index].strCategory ?? '';
+    final meals = AppFakeData.foodMealsByCategory[category] ?? const [];
+    emit(state.copyWith(mealsList: meals, isMealsLoading: false));
   }
 
   void _changeTab(int index) {

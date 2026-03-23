@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
 import 'package:elevate_super_fitness/core/custom_widget/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class CustomRecommendationItem extends StatelessWidget {
   const CustomRecommendationItem({
@@ -83,3 +83,4 @@ class CustomRecommendationItem extends StatelessWidget {
     );
   }
 }
+

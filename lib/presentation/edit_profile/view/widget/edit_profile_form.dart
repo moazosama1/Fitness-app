@@ -1,7 +1,7 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/validations.dart';
@@ -77,3 +77,4 @@ class EditProfileForm extends StatelessWidget {
     );
   }
 }
+

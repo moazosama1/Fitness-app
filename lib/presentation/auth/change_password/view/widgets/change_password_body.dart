@@ -8,7 +8,7 @@ import 'package:elevate_super_fitness/presentation/auth/change_password/view/wid
 import 'package:elevate_super_fitness/presentation/auth/change_password/view_model/change_password_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ChangePasswordBody extends StatefulWidget {
   const ChangePasswordBody({super.key});
@@ -81,3 +81,4 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
     );
   }
 }
+

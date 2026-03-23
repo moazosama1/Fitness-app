@@ -35,10 +35,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<bool> getRememberMe() async {
     final FlutterSecureStorage secureStorage = getIt
         .get<FlutterSecureStorage>();
-    final String? rememberMeValue = await secureStorage.read(
-      key: ConstKeys.keyRememberMe,
-    );
-    return rememberMeValue == "true";
+    try {
+      final String? rememberMeValue = await secureStorage.read(
+        key: ConstKeys.keyRememberMe,
+      );
+      return rememberMeValue == "true";
+    } catch (_) {
+      // Web secure storage may throw OperationError when persisted data is stale.
+      await secureStorage.deleteAll();
+      return false;
+    }
   }
 
   @override

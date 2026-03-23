@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:elevate_super_fitness/core/constants/const_keys.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-
 abstract class TokenStorage {
   static AndroidOptions _getAndroidOptions() =>
       const AndroidOptions(encryptedSharedPreferences: true);
@@ -20,11 +19,21 @@ abstract class TokenStorage {
   }
 
   static Future<String?> getToken() async {
-    return await _storage.read(key: ConstKeys.keyUserToken);
+    try {
+      return await _storage.read(key: ConstKeys.keyUserToken);
+    } catch (e) {
+      log('SecureStorage read error: $e');
+      await _storage.deleteAll();
+      return null;
+    }
   }
 
   static Future<void> deleteToken() async {
-    await _storage.delete(key: ConstKeys.keyUserToken);
+    try {
+      await _storage.delete(key: ConstKeys.keyUserToken);
+    } catch (e) {
+      log('SecureStorage delete error: $e');
+      await _storage.deleteAll();
+    }
   }
-
 }

@@ -2,7 +2,7 @@ import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/core/utils/validations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/custom_widget/custom_glass_shape_widget.dart';
@@ -180,3 +180,4 @@ class RegisterFormWidget extends StatelessWidget {
     );
   }
 }
+

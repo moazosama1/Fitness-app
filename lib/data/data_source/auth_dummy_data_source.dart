@@ -35,10 +35,33 @@ class AuthDummyDataSource {
   Future<UserModel> login(LoginRequestEntity request) async {
     await Future.delayed(const Duration(milliseconds: 800));
     final email = request.email?.trim().toLowerCase() ?? '';
-    final password = request.password ?? '';
+    final password = (request.password ?? '').trim();
     final index = _users.indexWhere((u) => u.email.toLowerCase() == email);
     if (index == -1) {
-      throw 'User not found';
+      if (!_isValidEmail(email)) {
+        throw 'Invalid email format';
+      }
+      if (password.length < 8) {
+        throw 'Password must be at least 8 characters';
+      }
+
+      final user = UserModel(
+        id: DateTime.now().microsecondsSinceEpoch.toString(),
+        firstName: 'Dummy',
+        lastName: 'User',
+        email: email,
+        password: password,
+        gender: 'male',
+        age: 22,
+        weight: 70,
+        height: 172,
+        activityLevel: 'rookie',
+        goal: 'fitness',
+        photo: null,
+        createdAt: DateTime.now().toIso8601String(),
+      );
+      _users.add(user);
+      return user;
     }
     final user = _users[index];
     if (user.password != password) {

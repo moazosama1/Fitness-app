@@ -1,12 +1,10 @@
-
-
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_icons.dart';
-import 'package:elevate_super_fitness/core/constants/app_images.dart';
+import 'package:elevate_super_fitness/core/constants/constant_dummy_image.dart';
 import 'package:elevate_super_fitness/domain/entites/get_selected_exercise_entity.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ExerciseCard extends StatelessWidget {
@@ -22,14 +20,7 @@ class ExerciseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final videoId = YoutubePlayer.convertUrlToId(
-      exerciseEntity.inDepthYoutubeExplanationLink ?? exerciseEntity.shortYoutubeDemonstrationLink ?? "",
-    );
-
-    final thumbnailUrl = videoId != null
-        ? "https://img.youtube.com/vi/$videoId/0.jpg"
-        : AppImages.exerciseCardImage;
+    const thumbnailAsset = AppDummyImage.dummyImageFitness8;
 
     return Container(
       width: double.infinity,
@@ -52,19 +43,11 @@ class ExerciseCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(
-              thumbnailUrl,
+            child: Image.asset(
+              thumbnailAsset,
               width: 80,
               height: 88,
-              fit: BoxFit.fill,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset(
-                  AppImages.exerciseCardImage,
-                  width: 80,
-                  height: 88,
-                  fit: BoxFit.cover,
-                );
-              },
+              fit: BoxFit.cover,
             ),
           ),
 
@@ -194,10 +177,11 @@ class ExerciseCard extends StatelessWidget {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  AppLocalizations.of(context).videoNotAvailableForThisExercise,
-                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppColors.pureWhite
-                                  ),
+                                  AppLocalizations.of(
+                                    context,
+                                  ).videoNotAvailableForThisExercise,
+                                  style: Theme.of(context).textTheme.bodySmall!
+                                      .copyWith(color: AppColors.pureWhite),
                                 ),
                               ),
                             );
@@ -225,3 +209,4 @@ class ExerciseCard extends StatelessWidget {
     );
   }
 }
+

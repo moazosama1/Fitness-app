@@ -3,7 +3,7 @@ import 'package:elevate_super_fitness/core/constants/app_icons.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ExerciseVideoCoverSection extends StatelessWidget {
   const ExerciseVideoCoverSection({super.key, required this.title});
@@ -52,85 +52,84 @@ class ExerciseVideoCoverSection extends StatelessWidget {
           right: 16,
           left: 16,
           bottom: 6,
-          child: SizedBox(
-            width: double.infinity,
-            height: 140,
-            child: Column(
-              children: [
-                Text(
-                  "${title ?? ""} ${AppLocalizations.of(context).exercise}",
-                  maxLines: 1,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.pureWhite,
-                  ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                "${title ?? ""} ${AppLocalizations.of(context).exercise}",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.pureWhite,
                 ),
-                const SizedBox(height: 6),
-                Text(
+              ),
+              const SizedBox(height: 4),
+              Expanded(
+                child: Text(
                   AppLocalizations.of(
                     context,
                   ).loremIpsumDolorSitAmetConsecteturTempusVolutpatUtNisiMorbi,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyMedium!.copyWith(color: AppColors.pureWhite),
                 ),
-                const SizedBox(height: 6),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 52,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: AppColors.backGroundL.withOpacity(0.5),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                        border: Border.all(
-                          width: 0.5,
-                          color: AppColors.backGroundL[90]!,
-                        ),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 52,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: AppColors.backGroundL.withOpacity(0.5),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(
+                        width: 0.5,
+                        color: AppColors.backGroundL[90]!,
                       ),
-                      child: Center(
-                        child: Text(
-                          AppLocalizations.of(context).min30,
-                          style: Theme.of(context).textTheme.bodySmall!
-                              .copyWith(color: AppColors.pureWhite),
+                    ),
+                    child: Center(
+                      child: Text(
+                        AppLocalizations.of(context).min30,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColors.pureWhite,
                         ),
                       ),
                     ),
-                    Container(
-                      width: 52,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: AppColors.backGroundL.withOpacity(0.5),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                        border: Border.all(
-                          width: 0.5,
-                          color: AppColors.backGroundL[90]!,
-                        ),
+                  ),
+                  Container(
+                    width: 52,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: AppColors.backGroundL.withOpacity(0.5),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(
+                        width: 0.5,
+                        color: AppColors.backGroundL[90]!,
                       ),
-                      child: Center(
-                        child: Text(
-                          AppLocalizations.of(context).cal130,
-                          style: Theme.of(context).textTheme.bodySmall!
-                              .copyWith(
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.mainColorL,
-                              ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        AppLocalizations.of(context).cal130,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.mainColorL,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 }
+

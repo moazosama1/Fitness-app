@@ -13,7 +13,7 @@ import 'package:elevate_super_fitness/presentation/smart_coach_page/view_model/s
 import 'package:elevate_super_fitness/presentation/smart_coach_page/view_model/smart_coach_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SmartCoachPage extends StatefulWidget {
@@ -52,7 +52,11 @@ class _SmartCoachPageState extends State<SmartCoachPage> {
         body: Stack(
           children: [
             ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 0, sigmaY: 12.5),
+              imageFilter: ImageFilter.blur(
+                sigmaX: 5,
+                sigmaY: 5,
+                tileMode: TileMode.clamp,
+              ),
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -67,128 +71,134 @@ class _SmartCoachPageState extends State<SmartCoachPage> {
             ),
 
             SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 33,
-                      right: 16,
-                      left: 16,
-                      bottom: 25,
-                    ),
-                    child: SizedBox(
-                      height: 50.h,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(AppIcons.arrowBackIcon),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BlocBuilder<MainHomeViewModel, MainHomeStates>(
-                                builder: (context, state) {
-                                  final name =
-                                      state.userInfo?.data?.firstName ?? "";
-                                  AppImages.userImage;
-                                  return Text(
-                                    "${AppLocalizations.of(context).hi} $name,",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.pureWhite,
-                                        ),
-                                  );
-                                },
-                              ),
-                              Text(
-                                AppLocalizations.of(context).iAmYourSmartCoach,
-                                style: Theme.of(context).textTheme.bodyMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColors.pureWhite,
-                                    ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 24,
-                            width: 24,
-                            child: ImageIcon(
-                              const AssetImage(AppIcons.menuIcon),
-                              color: AppColors.mainColorL,
-                            ),
-                          ),
-                        ],
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 16,
+                        left: 16,
+                        bottom: 25,
                       ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      height: 343,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppImages.robot),
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
-                      child: Container(
-                        height: 194,
+                      child: SizedBox(
+                        height: 50.h,
                         width: double.infinity,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 36,
-                          horizontal: 30,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.backGroundL.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              AppLocalizations.of(
-                                context,
-                              ).howCanIAssistYouToday,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyLarge!
-                                  .copyWith(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w800,
-                                    color: AppColors.pureWhite,
-                                  ),
-                            ),
-                            const SizedBox(height: 8),
-                            SizedBox(
-                              height: 38,
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, RouteNames.chat);
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context).getStarted,
+                            SvgPicture.asset(AppIcons.arrowBackIcon),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BlocBuilder<MainHomeViewModel, MainHomeStates>(
+                                  builder: (context, state) {
+                                    final name =
+                                        state.userInfo?.data?.firstName ?? "";
+                                    AppImages.userImage;
+                                    return Text(
+                                      "${AppLocalizations.of(context).hi} $name,",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color: AppColors.pureWhite,
+                                          ),
+                                    );
+                                  },
                                 ),
+                                Text(
+                                  AppLocalizations.of(
+                                    context,
+                                  ).iAmYourSmartCoach,
+                                  style: Theme.of(context).textTheme.bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColors.pureWhite,
+                                      ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: ImageIcon(
+                                const AssetImage(AppIcons.menuIcon),
+                                color: AppColors.mainColorL,
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                ],
+                    Center(
+                      child: Container(
+                        height: 300,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(AppImages.robot),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
+                        child: Container(
+                          height: 194,
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 36,
+                            horizontal: 30,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.backGroundL.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                AppLocalizations.of(
+                                  context,
+                                ).howCanIAssistYouToday,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodyLarge!
+                                    .copyWith(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w800,
+                                      color: AppColors.pureWhite,
+                                    ),
+                              ),
+                              const SizedBox(height: 8),
+                              SizedBox(
+                                height: 38,
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      RouteNames.chat,
+                                    );
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context).getStarted,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 55),
+                  ],
+                ),
               ),
             ),
           ],
@@ -197,3 +207,4 @@ class _SmartCoachPageState extends State<SmartCoachPage> {
     );
   }
 }
+

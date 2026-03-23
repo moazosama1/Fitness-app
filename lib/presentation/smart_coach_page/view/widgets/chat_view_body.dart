@@ -4,6 +4,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_icons.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
+import 'package:elevate_super_fitness/core/constants/constant_dummy_image.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:elevate_super_fitness/presentation/smart_coach_page/view/widgets/chat_message_custom_widget.dart';
 import 'package:elevate_super_fitness/presentation/smart_coach_page/view_model/smart_coach_events.dart';
@@ -40,14 +41,18 @@ class _ChatViewBodyState extends State<ChatViewBody> {
         return Stack(
           children: [
             ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 0, sigmaY: 12.5),
+              imageFilter: ImageFilter.blur(
+                sigmaX: 5,
+                sigmaY: 5,
+                tileMode: TileMode.clamp,
+              ),
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: AppColors.translucentBlack.withOpacity(0.5),
                   image: const DecorationImage(
-                    image: AssetImage(AppImages.chatBg),
+                    image: AssetImage(AppDummyImage.dummyImageFitness8),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -57,47 +62,43 @@ class _ChatViewBodyState extends State<ChatViewBody> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: Navigator.of(context).maybePop,
-                          child: CircleAvatar(
-                            radius: 12,
-                            backgroundColor: AppColors.mainColorL,
-                            child: const ImageIcon(
-                              AssetImage(AppIcons.arrowBack),
-                              size: 10,
-                              color: AppColors.pureWhite,
-                            ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: Navigator.of(context).maybePop,
+                        child: CircleAvatar(
+                          radius: 12,
+                          backgroundColor: AppColors.mainColorL,
+                          child: const ImageIcon(
+                            AssetImage(AppIcons.arrowBack),
+                            size: 10,
+                            color: AppColors.pureWhite,
                           ),
                         ),
-                        Text(
-                          AppLocalizations.of(context).smartCoach,
-                          style: Theme.of(context).textTheme.bodyLarge!
-                              .copyWith(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.pureWhite,
-                              ),
+                      ),
+                      Text(
+                        AppLocalizations.of(context).smartCoach,
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.pureWhite,
                         ),
-                        InkWell(
-                          onTap: () {
-                            widget.scaffoldKey.currentState!.openEndDrawer();
-                          },
-                          child: SizedBox(
-                            height: 24,
-                            width: 24,
-                            child: ImageIcon(
-                              const AssetImage(AppIcons.menuIcon),
-                              color: AppColors.mainColorL,
-                            ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          widget.scaffoldKey.currentState!.openEndDrawer();
+                        },
+                        child: SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: ImageIcon(
+                            const AssetImage(AppIcons.menuIcon),
+                            color: AppColors.mainColorL,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
 
                   Expanded(

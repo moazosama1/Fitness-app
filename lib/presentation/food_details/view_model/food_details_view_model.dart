@@ -1,4 +1,4 @@
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
 import 'package:elevate_super_fitness/domain/entites/meal_details_entity.dart';
 import 'package:elevate_super_fitness/domain/entites/meal_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_meal_details_by_id_use_case.dart';
@@ -13,12 +13,11 @@ part 'food_details_state.dart';
 
 @injectable
 class FoodDetailsViewModel extends Cubit<FoodDetailsState> {
-  final GetMealsByCategoryUseCase _getMealsByCategoryUseCase;
-  final GetMealDetailsByIdUseCase _getMealDetailsByIdUseCase;
+  static const Duration _fakeDelay = Duration(milliseconds: 350);
 
   FoodDetailsViewModel(
-    this._getMealsByCategoryUseCase,
-    this._getMealDetailsByIdUseCase,
+    GetMealsByCategoryUseCase getMealsByCategoryUseCase,
+    GetMealDetailsByIdUseCase getMealDetailsByIdUseCase,
   ) : super(const FoodDetailsState());
 
   void doIntent(FoodDetailsEvents events) {
@@ -31,38 +30,17 @@ class FoodDetailsViewModel extends Cubit<FoodDetailsState> {
 
   Future<void> _getMealDetailsById(String id) async {
     emit(const FoodDetailsState(isLoading: true));
-    final result = await _getMealDetailsByIdUseCase(id);
-    switch (result) {
-      case ApiSuccessResult<List<MealDetailsEntity>>():
-        emit(state.copyWith(mealDetails: result.data.first, isLoading: false));
-        _getMealsByCategory(result.data.first.strCategory ?? "");
-        break;
-      case ApiErrorResult<List<MealDetailsEntity>>():
-        emit(
-          state.copyWith(errorMessage: result.errorMessage, isLoading: false),
-        );
-        break;
-    }
+    await Future.delayed(_fakeDelay);
+    final mealDetails = AppFakeData.foodMealDetailsById(id);
+    emit(state.copyWith(mealDetails: mealDetails, isLoading: false));
+    _getMealsByCategory(mealDetails.strCategory ?? '');
   }
 
   Future<void> _getMealsByCategory(String category) async {
     emit(state.copyWith(isMealsLoading: true));
-    final result = await _getMealsByCategoryUseCase(category);
-    switch (result) {
-      case ApiSuccessResult<List<MealEntity>>():
-        final meals = result.data;
-        meals.removeWhere((meal) => meal.idMeal == state.mealDetails?.idMeal);
-        meals.shuffle();
-        emit(state.copyWith(mealsList: meals, isMealsLoading: false));
-        break;
-      case ApiErrorResult<List<MealEntity>>():
-        emit(
-          state.copyWith(
-            errorMessage: result.errorMessage,
-            isMealsLoading: false,
-          ),
-        );
-        break;
-    }
+    await Future.delayed(_fakeDelay);
+    final meals = AppFakeData.foodRecommendedByCategory(category);
+    meals.removeWhere((meal) => meal.idMeal == state.mealDetails?.idMeal);
+    emit(state.copyWith(mealsList: meals, isMealsLoading: false));
   }
 }

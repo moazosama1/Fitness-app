@@ -27,7 +27,8 @@ class Validations {
     } else if (val.isEmpty) {
       return AppLocalizations().passwordIsRequired;
     } else if (val.length < 8 || !passwordRegex.hasMatch(val)) {
-      return AppLocalizations().passwordNotMatched;
+      return AppLocalizations()
+          .passwordMustContainUppercaseLowercaseDigitSpecialChar;
     } else {
       return null;
     }

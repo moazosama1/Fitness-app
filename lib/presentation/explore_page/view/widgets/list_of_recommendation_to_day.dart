@@ -5,7 +5,7 @@ import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/domain/entites/muscles_response_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ListOfRecommendationToDay extends StatelessWidget {
   const ListOfRecommendationToDay({super.key, this.randomMuscles});
@@ -59,3 +59,4 @@ class ListOfRecommendationToDay extends StatelessWidget {
     );
   }
 }
+

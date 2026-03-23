@@ -2,7 +2,7 @@ import 'package:elevate_super_fitness/core/custom_widget/custom_glass_shape_widg
 import 'package:elevate_super_fitness/core/utils/validations.dart';
 import 'package:elevate_super_fitness/presentation/auth/forget_password/view_model/forget_password_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../../core/constants/app_colors.dart';
@@ -152,3 +152,4 @@ class _CustomOtpInputPageState extends State<CustomOtpInputPage> {
     );
   }
 }
+

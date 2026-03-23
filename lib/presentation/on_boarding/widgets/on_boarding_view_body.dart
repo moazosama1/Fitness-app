@@ -6,7 +6,7 @@ import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:elevate_super_fitness/presentation/on_boarding/model/on_boarding_page_view_content_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -271,3 +271,4 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     );
   }
 }
+

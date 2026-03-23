@@ -4,7 +4,7 @@ import 'package:elevate_super_fitness/presentation/food_details/view/widget/food
 import 'package:elevate_super_fitness/presentation/food_details/view_model/food_details_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -102,3 +102,4 @@ class _FoodDetailsViewBodyState extends State<FoodDetailsViewBody> {
     );
   }
 }
+

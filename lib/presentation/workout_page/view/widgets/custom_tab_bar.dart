@@ -1,7 +1,7 @@
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class CustomTabBarPage extends StatelessWidget {
   final TabController tabController;
@@ -60,3 +60,4 @@ class CustomTabBarPage extends StatelessWidget {
     );
   }
 }
+

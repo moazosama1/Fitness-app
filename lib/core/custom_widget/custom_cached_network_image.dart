@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
@@ -19,13 +18,17 @@ class CustomCachedNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
+    if (!imageUrl.startsWith('assets/')) {
+      return const Icon(Icons.broken_image);
+    }
+
+    return Image.asset(
+      imageUrl,
       height: height,
       width: width,
       fit: fit,
-      imageUrl: imageUrl,
       color: color,
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
     );
   }
 }

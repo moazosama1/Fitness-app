@@ -14,12 +14,22 @@ class AppConfig extends ChangeNotifier {
   String? get local => _local;
 
   Future<void> saveLocal(String value) async {
-    await _secureStorage.write(key: ConstKeys.kLocal, value: value);
+    try {
+      await _secureStorage.write(key: ConstKeys.kLocal, value: value);
+    } catch (_) {
+      await _secureStorage.deleteAll();
+      await _secureStorage.write(key: ConstKeys.kLocal, value: value);
+    }
     _local = value;
   }
 
   Future<void> getLocal() async {
-    _local = await _secureStorage.read(key: ConstKeys.kLocal);
+    try {
+      _local = await _secureStorage.read(key: ConstKeys.kLocal);
+    } catch (_) {
+      await _secureStorage.deleteAll();
+      _local = null;
+    }
     notifyListeners();
   }
 

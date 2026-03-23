@@ -1,7 +1,7 @@
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/const_keys.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 abstract class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -127,3 +127,4 @@ abstract class AppTheme {
     );
   }
 }
+

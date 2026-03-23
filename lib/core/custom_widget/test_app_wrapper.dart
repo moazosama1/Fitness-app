@@ -1,7 +1,7 @@
 import 'package:elevate_super_fitness/core/constants/app_theme.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:elevate_super_fitness/core/router/app_router.dart';
 
@@ -37,3 +37,4 @@ class TestAppWrapper extends StatelessWidget {
     );
   }
 }
+

@@ -1,6 +1,6 @@
 import 'package:elevate_super_fitness/presentation/food/view/widget/food_meal_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../core/router/route_names.dart';
 import '../../../../domain/entites/meal_entity.dart';
@@ -36,3 +36,4 @@ class FoodTabBarView extends StatelessWidget {
     );
   }
 }
+

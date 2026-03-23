@@ -1,7 +1,7 @@
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class CustomTitlePage extends StatelessWidget {
   const CustomTitlePage({super.key});
@@ -37,3 +37,4 @@ class CustomTitlePage extends StatelessWidget {
     );
   }
 }
+

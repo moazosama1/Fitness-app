@@ -4,7 +4,7 @@ import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/domain/entites/muscle_entity.dart';
 import 'package:elevate_super_fitness/presentation/workout_page/view/widgets/custom_exercise_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ListWorkoutsItem extends StatelessWidget {
   const ListWorkoutsItem({
@@ -61,3 +61,4 @@ class ListWorkoutsItem extends StatelessWidget {
     );
   }
 }
+

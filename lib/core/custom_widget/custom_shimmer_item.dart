@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:shimmer/shimmer.dart';
 
 Widget buildShimmerList(double height, double? width) {
@@ -126,3 +126,4 @@ Widget buildShimmerEditImage() {
     ),
   );
 }
+

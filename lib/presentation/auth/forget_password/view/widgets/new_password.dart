@@ -3,7 +3,7 @@ import 'package:elevate_super_fitness/core/custom_widget/custom_glass_shape_widg
 import 'package:elevate_super_fitness/core/utils/validations.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../view_model/forget_password_events.dart';
 import '../../view_model/forget_password_view_model.dart';
@@ -166,3 +166,4 @@ class _CreateNewPasswordContainerState
     );
   }
 }
+

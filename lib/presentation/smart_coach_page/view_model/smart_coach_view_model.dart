@@ -1,9 +1,8 @@
 import 'package:elevate_super_fitness/api/models/chat_message_model.dart';
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
+import 'package:elevate_super_fitness/core/utils/chat_memory_service.dart';
 import 'package:elevate_super_fitness/core/utils/gemini_service.dart';
-import 'package:elevate_super_fitness/core/utils/object_box_service.dart';
-import 'package:elevate_super_fitness/domain/entites/user_info_entity.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_user_logged_data_use_case.dart';
 import 'package:elevate_super_fitness/presentation/smart_coach_page/view_model/smart_coach_events.dart';
 import 'package:elevate_super_fitness/presentation/smart_coach_page/view_model/smart_coach_states.dart';
@@ -13,14 +12,13 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class SmartCoachViewModel extends Cubit<SmartCoachStates> {
-  final GeminiService _geminiService;
-  final ObjectBoxService _db;
-  final GetUserLoggedDataUseCase _getUserLoggedDataUseCase;
+  final ChatMemoryService _db;
+  static const Duration _fakeDelay = Duration(milliseconds: 450);
 
   SmartCoachViewModel(
-    this._geminiService,
     this._db,
-    this._getUserLoggedDataUseCase,
+    GeminiService geminiService,
+    GetUserLoggedDataUseCase getUserLoggedDataUseCase,
   ) : super(const SmartCoachStates());
 
   final TextEditingController inputController = TextEditingController();
@@ -49,7 +47,8 @@ class SmartCoachViewModel extends Cubit<SmartCoachStates> {
   Future<void> _loadWelcomeMessage() async {
     final newCid = _db.generateConversationId();
 
-    final welcome = await _geminiService.welcomeMessage();
+    const welcome =
+        'Welcome to Smart Coach. I am running in fake test mode and can help with workouts, food, and recovery tips.';
     _db.addMessage(
       conversationId: newCid,
       text: welcome,
@@ -76,20 +75,9 @@ class SmartCoachViewModel extends Cubit<SmartCoachStates> {
 
     final isFirstMessage = state.messagesListSuccess.isEmpty;
 
-    await _getUserLoggedData();
-    final userPhoto = state.loggedUserDataSuccess?.photo;
+    const image = AppImages.userImage;
 
-    final image = (userPhoto != null && userPhoto.isNotEmpty)
-        ? userPhoto
-        : AppImages.userImage;
-
-
-    _db.addMessage(
-      conversationId: cid,
-      text: text,
-      isUser: true,
-      image: image,
-    );
+    _db.addMessage(conversationId: cid, text: text, isUser: true, image: image);
 
     if (isFirstMessage) {
       final updatedTitles = Map<int, String>.from(state.conversationTitles);
@@ -117,7 +105,8 @@ class SmartCoachViewModel extends Cubit<SmartCoachStates> {
     inputController.clear();
 
     emit(state.copyWith(isLoading: true));
-    final replyText = await _geminiService.sendMessage(text);
+    await Future.delayed(_fakeDelay);
+    final replyText = _buildFakeReply(text);
 
     _db.addMessage(
       conversationId: cid,
@@ -143,6 +132,35 @@ class SmartCoachViewModel extends Cubit<SmartCoachStates> {
     );
 
     _scrollToBottom();
+  }
+
+  String _buildFakeReply(String userMessage) {
+    final text = userMessage.toLowerCase();
+    if (text.contains('diet') ||
+        text.contains('food') ||
+        text.contains('meal')) {
+      return 'Fake Coach: Keep meals simple. Aim for protein + complex carbs + vegetables in each main meal.';
+    }
+    if (text.contains('workout') ||
+        text.contains('exercise') ||
+        text.contains('train')) {
+      return 'Fake Coach: Start with 3 sessions weekly, focus on compound moves, and increase intensity gradually.';
+    }
+    if (text.contains('sleep') || text.contains('recovery')) {
+      return 'Fake Coach: Target 7-8 hours sleep and include at least 1 full rest day each week.';
+    }
+    return 'Fake Coach: Good question. For test mode, try balanced training, consistent nutrition, and proper recovery.';
+  }
+
+  Future<void> _getUserLoggedData() async {
+    emit(state.copyWith(loggedUserDataLoading: true));
+    await Future.delayed(const Duration(milliseconds: 200));
+    emit(
+      state.copyWith(
+        loggedUserDataLoading: false,
+        loggedUserDataSuccess: AppFakeData.profileUser,
+      ),
+    );
   }
 
   void _loadConversations() {
@@ -184,27 +202,6 @@ class SmartCoachViewModel extends Cubit<SmartCoachStates> {
         curve: Curves.easeOut,
       );
     });
-  }
-
-   Future<void> _getUserLoggedData() async {
-    emit(state.copyWith(loggedUserDataLoading: true));
-    final result = await _getUserLoggedDataUseCase.call();
-    switch (result) {
-      case ApiSuccessResult<UserInfoEntity>():
-        emit(
-          state.copyWith(
-            loggedUserDataLoading: false,
-            loggedUserDataSuccess: result.data,
-          ),
-        );
-      case ApiErrorResult<UserInfoEntity>():
-        emit(
-          state.copyWith(
-            loggedUserDataLoading: false,
-            loggedUserDataFailure: result.errorMessage,
-          ),
-        );
-    }
   }
 
   @override

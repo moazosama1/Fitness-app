@@ -6,7 +6,7 @@ import 'package:elevate_super_fitness/presentation/main_home/view_model/main_hom
 import 'package:elevate_super_fitness/presentation/workout_page/view/widgets/list_workouts_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import '../../../../core/di/di.dart';
 import '../../view_model/workout_event.dart';
 import '../../view_model/workout_states.dart';
@@ -142,3 +142,4 @@ class _WorkoutsPageState extends State<WorkoutsPage>
     );
   }
 }
+

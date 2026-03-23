@@ -4,7 +4,7 @@ import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/domain/entites/meals_categories_response_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ListOfRecommendationForYou extends StatelessWidget {
   const ListOfRecommendationForYou({super.key, this.mealsCategory});
@@ -53,3 +53,4 @@ class ListOfRecommendationForYou extends StatelessWidget {
     );
   }
 }
+

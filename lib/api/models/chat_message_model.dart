@@ -1,9 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:objectbox/objectbox.dart';
 
-@Entity()
 class ChatMessageModel extends Equatable {
-  @Id()
   int id;
 
   int conversationId;
@@ -12,7 +9,6 @@ class ChatMessageModel extends Equatable {
   String image;
   String? conversationTitle;
 
-  @Property(type: PropertyType.date)
   DateTime createdAt;
 
   ChatMessageModel({
@@ -24,7 +20,15 @@ class ChatMessageModel extends Equatable {
     this.conversationTitle,
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
-  
+
   @override
-  List<Object?> get props => [id,conversationId,text,isUser,image,conversationTitle,createdAt];
+  List<Object?> get props => [
+    id,
+    conversationId,
+    text,
+    isUser,
+    image,
+    conversationTitle,
+    createdAt,
+  ];
 }

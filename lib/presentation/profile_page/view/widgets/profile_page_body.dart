@@ -7,7 +7,7 @@ import 'package:elevate_super_fitness/presentation/profile_page/view/widgets/sec
 import 'package:elevate_super_fitness/presentation/profile_page/view_model/main_profile_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class ProfilePageBody extends StatelessWidget {
   const ProfilePageBody({super.key});
@@ -63,3 +63,4 @@ class ProfilePageBody extends StatelessWidget {
     );
   }
 }
+

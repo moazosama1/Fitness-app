@@ -158,5 +158,6 @@
   "security": "الأمان",
   "privacyPolicy": "سياسة الخصوصية",
   "help": "المساعدة",
-  "doYouSureLogout": "هل أنت متأكد من تسجيل الخروج؟"
+  "doYouSureLogout": "هل أنت متأكد من تسجيل الخروج؟",
+  "passwordMustContainUppercaseLowercaseDigitSpecialChar": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل، حرف صغير واحد، رقم واحد، وحرف خاص واحد."
 }

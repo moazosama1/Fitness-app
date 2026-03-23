@@ -1,7 +1,7 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:elevate_super_fitness/core/custom_widget/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../core/constants/app_colors.dart';
@@ -211,3 +211,4 @@ class FoodDetailsMealInfo extends StatelessWidget {
     );
   }
 }
+

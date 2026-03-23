@@ -1,6 +1,4 @@
-import 'package:elevate_super_fitness/core/api_result/api_result.dart';
-import 'package:elevate_super_fitness/domain/entites/exercise_difficulty_level_entity.dart';
-import 'package:elevate_super_fitness/domain/entites/get_selected_exercise_entity.dart';
+import 'package:elevate_super_fitness/core/constants/constant_fake_data.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_all_difficulty_levels_by_prime_mover_muscle_use_case.dart';
 import 'package:elevate_super_fitness/domain/use_cases/get_exercises_by_prime_mover_muscle_and_difficulty_level_use_case.dart';
 import 'package:elevate_super_fitness/presentation/exercise/view_model/exercise_events.dart';
@@ -10,14 +8,13 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ExerciseViewModel extends Cubit<ExerciseStates> {
-  final GetAllDifficultyLevelsByPrimeMoverMuscleUseCase
-  _getAllDifficultyLevelsByPrimeMoverMuscleUseCase;
-  final GetExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase
-  _getExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase;
+  static const Duration _fakeDelay = Duration(milliseconds: 350);
 
   ExerciseViewModel(
-    this._getAllDifficultyLevelsByPrimeMoverMuscleUseCase,
-    this._getExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase,
+    GetAllDifficultyLevelsByPrimeMoverMuscleUseCase
+    getAllDifficultyLevelsByPrimeMoverMuscleUseCase,
+    GetExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase
+    getExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase,
   ) : super(const ExerciseStates());
 
   void doIntent(ExerciseEvents event) {
@@ -37,25 +34,13 @@ class ExerciseViewModel extends Cubit<ExerciseStates> {
     String primeMoverMuscleId,
   ) async {
     emit(state.copyWith(difficultyLevelsLoading: true));
-    final result = await _getAllDifficultyLevelsByPrimeMoverMuscleUseCase.call(
-      primeMoverMuscleId: primeMoverMuscleId,
+    await Future.delayed(_fakeDelay);
+    emit(
+      state.copyWith(
+        difficultyLevelsLoading: false,
+        difficultyLevelsSuccess: AppFakeData.exerciseDifficultyLevels,
+      ),
     );
-    switch (result) {
-      case ApiSuccessResult<List<ExerciseDifficultyLevelEntity>>():
-        emit(
-          state.copyWith(
-            difficultyLevelsLoading: false,
-            difficultyLevelsSuccess: result.data,
-          ),
-        );
-      case ApiErrorResult<List<ExerciseDifficultyLevelEntity>>():
-        emit(
-          state.copyWith(
-            difficultyLevelsLoading: false,
-            difficultyLevelsErrorMessage: result.errorMessage,
-          ),
-        );
-    }
   }
 
   Future<void> _getExercisesByPrimeMoverMuscleandDifficultyLevel(
@@ -63,26 +48,13 @@ class ExerciseViewModel extends Cubit<ExerciseStates> {
     String difficultyLevelId,
   ) async {
     emit(state.copyWith(exercisesListLoading: true));
-    final result =
-        await _getExercisesByPrimeMoverMuscleAndDifficultyLevelUseCase.call(
-          primeMoverMuscleId: primeMoverMuscleId,
-          difficultyLevelId: difficultyLevelId,
-        );
-    switch (result) {
-      case ApiSuccessResult<List<GetSelectedExerciseEntity>>():
-        emit(
-          state.copyWith(
-            exercisesListLoading: false,
-            exercisesListSuccess: result.data,
-          ),
-        );
-      case ApiErrorResult<List<GetSelectedExerciseEntity>>():
-        emit(
-          state.copyWith(
-            exercisesListLoading: false,
-            exercisesListErrorMessage: result.errorMessage,
-          ),
-        );
-    }
+    await Future.delayed(_fakeDelay);
+    final exercises = AppFakeData.exercisesByLevel(difficultyLevelId);
+    emit(
+      state.copyWith(
+        exercisesListLoading: false,
+        exercisesListSuccess: exercises,
+      ),
+    );
   }
 }

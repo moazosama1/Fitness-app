@@ -1,6 +1,6 @@
 import 'package:elevate_super_fitness/core/custom_widget/custom_glass_shape_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/utils/validations.dart';
 import '../../../../../generated/l10n.dart';
@@ -117,3 +117,4 @@ class _EmailInputContainerState extends State<EmailInputContainer> {
     );
   }
 }
+

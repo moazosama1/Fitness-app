@@ -3,7 +3,7 @@ import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/generated/l10n.dart';
 import 'package:elevate_super_fitness/presentation/auth/register/view/widgets/custom_register_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/constants/app_images.dart';
@@ -86,3 +86,4 @@ class RegisterGenderPage extends StatelessWidget {
     );
   }
 }
+

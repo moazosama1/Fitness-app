@@ -1,7 +1,7 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:elevate_super_fitness/core/custom_widget/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 import '../../../../core/constants/app_colors.dart';
 
@@ -22,22 +22,30 @@ class FoodMealItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Stack(
+        fit: StackFit.expand,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.r),
-            child: CustomCachedNetworkImage(imageUrl: mealImage),
-          ),
-          Container(
-            decoration: BoxDecoration(
+          Positioned.fill(
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20.r),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.black.withValues(alpha: 0.5),
-                  offset: const Offset(0, 4),
-                  blurRadius: 12.5,
-                  spreadRadius: 0,
+              child: CustomCachedNetworkImage(
+                imageUrl: mealImage,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.center,
+                  colors: [
+                    AppColors.black.withValues(alpha: 0.55),
+                    Colors.transparent,
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Align(
@@ -59,3 +67,4 @@ class FoodMealItem extends StatelessWidget {
     );
   }
 }
+

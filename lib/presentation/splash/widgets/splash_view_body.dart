@@ -1,6 +1,6 @@
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elevate_super_fitness/core/utils/screen_util.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
