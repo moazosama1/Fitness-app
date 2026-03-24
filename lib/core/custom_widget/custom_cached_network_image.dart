@@ -28,6 +28,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
       width: width,
       fit: fit,
       color: color,
+      cacheWidth: 400,
+      cacheHeight: 400,
       errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
     );
   }

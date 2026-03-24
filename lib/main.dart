@@ -1,4 +1,5 @@
-import 'package:device_preview/device_preview.dart';
+import 'dart:ui';
+
 import 'package:elevate_super_fitness/core/app_config/app_config.dart';
 import 'package:elevate_super_fitness/core/constants/const_keys.dart';
 import 'package:elevate_super_fitness/core/utils/chat_memory_service.dart';
@@ -21,12 +22,9 @@ void main() async {
   await chatMemoryService.init();
   Bloc.observer = MyBlocObserver();
   runApp(
-    DevicePreview(
-      builder: (context) => ChangeNotifierProvider(
-        create: (context) => getIt.get<AppConfig>(),
-        child: const MyApp(),
-      ),
-      enabled: false,
+    ChangeNotifierProvider(
+      create: (context) => getIt.get<AppConfig>(),
+      child: const MyApp(),
     ),
   );
 }
@@ -62,6 +60,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
