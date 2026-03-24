@@ -30,6 +30,7 @@ class ListOfRecommendationToDay extends StatelessWidget {
                 constraints: BoxConstraints(maxHeight: heightMediaQuery * 0.15),
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
+                  addAutomaticKeepAlives: false,
                   itemBuilder: (context, index) {
                     final selectedItem = muscles[index];
                     return GestureDetector(

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_icons.dart';
@@ -40,23 +38,24 @@ class _ChatViewBodyState extends State<ChatViewBody> {
       builder: (context, state) {
         return Stack(
           children: [
-            ImageFiltered(
-              imageFilter: ImageFilter.blur(
-                sigmaX: 5,
-                sigmaY: 5,
-                tileMode: TileMode.clamp,
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.translucentBlack.withOpacity(0.5),
-                  image: const DecorationImage(
-                    image: AssetImage(AppDummyImage.dummyImageFitness8),
-                    fit: BoxFit.cover,
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: ResizeImage(
+                    AssetImage(AppDummyImage.dummyImageFitness8),
+                    width: 828,
+                    policy: ResizeImagePolicy.fit,
                   ),
+                  fit: BoxFit.cover,
                 ),
               ),
+            ),
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.black.withOpacity(0.55),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),

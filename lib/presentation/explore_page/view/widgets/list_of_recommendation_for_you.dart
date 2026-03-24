@@ -26,6 +26,7 @@ class ListOfRecommendationForYou extends StatelessWidget {
                 constraints: BoxConstraints(maxHeight: heightMediaQuery * 0.15),
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
+                  addAutomaticKeepAlives: false,
                   itemBuilder: (context, index) {
                     final selectedItem =
                         mealsCategory?.data?.categories?[index];

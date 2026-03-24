@@ -110,22 +110,22 @@ class AppFakeData {
     MuscleEntity(
       id: 'muscle-2',
       name: 'Shoulder Burn',
-      image: AppDummyImage.dummyImageFitness2,
+      image: AppDummyImage.dummyImageFitness1,
     ),
     MuscleEntity(
       id: 'muscle-3',
       name: 'Core Focus',
-      image: AppDummyImage.dummyImageFitness3,
+      image: AppDummyImage.dummyImageFitness1,
     ),
     MuscleEntity(
       id: 'muscle-4',
       name: 'Leg Power',
-      image: AppDummyImage.dummyImageFitness4,
+      image: AppDummyImage.dummyImageFitness1,
     ),
     MuscleEntity(
       id: 'muscle-5',
       name: 'Back Strength',
-      image: AppDummyImage.dummyImageFitness5,
+      image: AppDummyImage.dummyImageFitness1,
     ),
   ];
 
@@ -140,29 +140,29 @@ class AppFakeData {
       MuscleEntity(
         id: 'up-1',
         name: 'Upper Push',
-        image: AppDummyImage.dummyImageFitness6,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-2',
         name: 'Lower Drive',
-        image: AppDummyImage.dummyImageFitness7,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-3',
         name: 'Pull Builder',
-        image: AppDummyImage.dummyImageFitness8,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
     'group-cardio': [
       MuscleEntity(
         id: 'up-4',
         name: 'HIIT Sprint',
-        image: AppDummyImage.dummyImageFitness9,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-5',
         name: 'Tempo Run',
-        image: AppDummyImage.dummyImageFitness10,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-6',
@@ -174,17 +174,17 @@ class AppFakeData {
       MuscleEntity(
         id: 'up-7',
         name: 'Full Stretch',
-        image: AppDummyImage.dummyImageFitness2,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-8',
         name: 'Hip Openers',
-        image: AppDummyImage.dummyImageFitness3,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'up-9',
         name: 'Recovery Flow',
-        image: AppDummyImage.dummyImageFitness4,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
   };
@@ -198,22 +198,22 @@ class AppFakeData {
     MealCategoryEntity(
       idCategory: 'food-2',
       strCategory: 'Lean Lunch',
-      strCategoryThumb: AppDummyImage.dummyImageFood2,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-3',
       strCategory: 'Healthy Snack',
-      strCategoryThumb: AppDummyImage.dummyImageFood3,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-4',
       strCategory: 'Post Workout',
-      strCategoryThumb: AppDummyImage.dummyImageFood4,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-5',
       strCategory: 'Energy Meal',
-      strCategoryThumb: AppDummyImage.dummyImageFood5,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
   ];
 
@@ -226,22 +226,22 @@ class AppFakeData {
     MealCategoryEntity(
       idCategory: 'food-2',
       strCategory: 'Lean Lunch',
-      strCategoryThumb: AppDummyImage.dummyImageFood2,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-3',
       strCategory: 'Healthy Snack',
-      strCategoryThumb: AppDummyImage.dummyImageFood3,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-4',
       strCategory: 'Post Workout',
-      strCategoryThumb: AppDummyImage.dummyImageFood4,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
     MealCategoryEntity(
       idCategory: 'food-5',
       strCategory: 'Energy Meal',
-      strCategoryThumb: AppDummyImage.dummyImageFood5,
+      strCategoryThumb: AppDummyImage.dummyImageFood1,
     ),
   ];
 
@@ -254,80 +254,80 @@ class AppFakeData {
       ),
       MealEntity(
         strMeal: 'Beef Rice Bowl',
-        strMealThumb: AppDummyImage.dummyImageFood6,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-2',
       ),
       MealEntity(
         strMeal: 'Tofu Protein Mix',
-        strMealThumb: AppDummyImage.dummyImageFood7,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-3',
       ),
     ],
     'Lean Lunch': [
       MealEntity(
         strMeal: 'Grilled Chicken Salad',
-        strMealThumb: AppDummyImage.dummyImageFood2,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-4',
       ),
       MealEntity(
         strMeal: 'Turkey Wrap',
-        strMealThumb: AppDummyImage.dummyImageFood8,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-5',
       ),
       MealEntity(
         strMeal: 'Tuna Plate',
-        strMealThumb: AppDummyImage.dummyImageFood9,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-6',
       ),
     ],
     'Healthy Snack': [
       MealEntity(
         strMeal: 'Greek Yogurt Cup',
-        strMealThumb: AppDummyImage.dummyImageFood3,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-7',
       ),
       MealEntity(
         strMeal: 'Fruit Nuts Box',
-        strMealThumb: AppDummyImage.dummyImageFood6,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-8',
       ),
       MealEntity(
         strMeal: 'Protein Bar Plate',
-        strMealThumb: AppDummyImage.dummyImageFood7,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-9',
       ),
     ],
     'Post Workout': [
       MealEntity(
         strMeal: 'Egg White Toast',
-        strMealThumb: AppDummyImage.dummyImageFood4,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-10',
       ),
       MealEntity(
         strMeal: 'Banana Shake',
-        strMealThumb: AppDummyImage.dummyImageFood8,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-11',
       ),
       MealEntity(
         strMeal: 'Recovery Smoothie',
-        strMealThumb: AppDummyImage.dummyImageFood9,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-12',
       ),
     ],
     'Energy Meal': [
       MealEntity(
         strMeal: 'Oats Power Bowl',
-        strMealThumb: AppDummyImage.dummyImageFood5,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-13',
       ),
       MealEntity(
         strMeal: 'Rice Chicken Combo',
-        strMealThumb: AppDummyImage.dummyImageFood6,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-14',
       ),
       MealEntity(
         strMeal: 'Sweet Potato Plate',
-        strMealThumb: AppDummyImage.dummyImageFood7,
+        strMealThumb: AppDummyImage.dummyImageFood1,
         idMeal: 'meal-15',
       ),
     ],
@@ -550,51 +550,51 @@ class AppFakeData {
       MuscleEntity(
         id: 'w-2',
         name: 'Back Builder',
-        image: AppDummyImage.dummyImageFitness2,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-3',
         name: 'Leg Force',
-        image: AppDummyImage.dummyImageFitness3,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-4',
         name: 'Core Stability',
-        image: AppDummyImage.dummyImageFitness4,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
     'group-cardio': [
       MuscleEntity(
         id: 'w-5',
         name: 'HIIT Sprint',
-        image: AppDummyImage.dummyImageFitness5,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-6',
         name: 'Cardio Flow',
-        image: AppDummyImage.dummyImageFitness6,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-7',
         name: 'Fast Burn',
-        image: AppDummyImage.dummyImageFitness7,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-8',
         name: 'Runner Mix',
-        image: AppDummyImage.dummyImageFitness8,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
     'group-mobility': [
       MuscleEntity(
         id: 'w-9',
         name: 'Stretch Deep',
-        image: AppDummyImage.dummyImageFitness9,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-10',
         name: 'Joint Reset',
-        image: AppDummyImage.dummyImageFitness10,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-11',
@@ -604,29 +604,29 @@ class AppFakeData {
       MuscleEntity(
         id: 'w-12',
         name: 'Balance Work',
-        image: AppDummyImage.dummyImageFitness2,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
     'group-endurance': [
       MuscleEntity(
         id: 'w-13',
         name: 'Long Set',
-        image: AppDummyImage.dummyImageFitness3,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-14',
         name: 'Tempo Circuit',
-        image: AppDummyImage.dummyImageFitness4,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-15',
         name: 'Steady Burn',
-        image: AppDummyImage.dummyImageFitness5,
+        image: AppDummyImage.dummyImageFitness1,
       ),
       MuscleEntity(
         id: 'w-16',
         name: 'Engine Build',
-        image: AppDummyImage.dummyImageFitness6,
+        image: AppDummyImage.dummyImageFitness1,
       ),
     ],
   };

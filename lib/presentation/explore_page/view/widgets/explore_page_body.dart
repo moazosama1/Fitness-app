@@ -99,10 +99,11 @@ class ExplorePageBody extends StatelessWidget {
                           WidgetsKeys.kExploreScreenListPopularTrainingItemsKey,
                         ),
                         scrollDirection: Axis.horizontal,
+                        addAutomaticKeepAlives: false,
                         itemBuilder: (context, index) =>
                             const CustomPopularTrainingItem(),
                         separatorBuilder: (_, _) => SizedBox(width: 16.w),
-                        itemCount: 10,
+                        itemCount: 5,
                       ),
                     );
                   },

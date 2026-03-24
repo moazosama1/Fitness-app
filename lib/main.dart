@@ -17,6 +17,11 @@ import 'core/router/route_names.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Cap the image cache to prevent OOM on iOS WebKit
+  PaintingBinding.instance.imageCache.maximumSize = 30;
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 30 << 20; // 30 MB
+
   configureDependencies();
   final chatMemoryService = getIt<ChatMemoryService>();
   await chatMemoryService.init();

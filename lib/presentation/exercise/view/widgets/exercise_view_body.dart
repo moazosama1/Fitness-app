@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:elevate_super_fitness/api/models/exercise_widget_model.dart';
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
@@ -65,18 +63,24 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
           length: difficultyLevels.length,
           child: Stack(
             children: [
-              ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 0, sigmaY: 55.3),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(AppImages.homeBgImage),
-                      fit: BoxFit.cover,
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: ResizeImage(
+                      AssetImage(AppImages.homeBgImage),
+                      width: 828,
+                      policy: ResizeImagePolicy.fit,
                     ),
+                    fit: BoxFit.cover,
                   ),
                 ),
+              ),
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.black.withOpacity(0.5),
               ),
               ListView(
                 children: [

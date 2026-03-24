@@ -25,6 +25,7 @@ class ListOfUpcomingItem extends StatelessWidget {
             child: ListView.separated(
               key: const Key(WidgetsKeys.kExploreScreenListTabBarItemsKey),
               scrollDirection: Axis.horizontal,
+              addAutomaticKeepAlives: false,
               itemBuilder: (context, index) {
                 final selectedItem =
                     musclesGroupDetailsById?.data?.musclesEntity?[index];

@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_icons.dart';
@@ -51,23 +50,24 @@ class _SmartCoachPageState extends State<SmartCoachPage> {
       child: Scaffold(
         body: Stack(
           children: [
-            ImageFiltered(
-              imageFilter: ImageFilter.blur(
-                sigmaX: 5,
-                sigmaY: 5,
-                tileMode: TileMode.clamp,
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.translucentBlack.withOpacity(0.5),
-                  image: const DecorationImage(
-                    image: AssetImage(AppImages.chatBg),
-                    fit: BoxFit.cover,
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: ResizeImage(
+                    AssetImage(AppImages.chatBg),
+                    width: 828,
+                    policy: ResizeImagePolicy.fit,
                   ),
+                  fit: BoxFit.cover,
                 ),
               ),
+            ),
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.black.withOpacity(0.55),
             ),
 
             SingleChildScrollView(
@@ -138,62 +138,60 @@ class _SmartCoachPageState extends State<SmartCoachPage> {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(AppImages.robot),
+                            image: ResizeImage(
+                              AssetImage(AppImages.robot),
+                              width: 600,
+                              policy: ResizeImagePolicy.fit,
+                            ),
                             fit: BoxFit.contain,
                           ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 16),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
-                        child: Container(
-                          height: 194,
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 36,
-                            horizontal: 30,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.backGroundL.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                AppLocalizations.of(
-                                  context,
-                                ).howCanIAssistYouToday,
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.bodyLarge!
-                                    .copyWith(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w800,
-                                      color: AppColors.pureWhite,
-                                    ),
-                              ),
-                              const SizedBox(height: 8),
-                              SizedBox(
-                                height: 38,
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      RouteNames.chat,
-                                    );
-                                  },
-                                  child: Text(
-                                    AppLocalizations.of(context).getStarted,
-                                  ),
+                    Container(
+                      height: 194,
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 36,
+                        horizontal: 30,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.backGroundL.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            AppLocalizations.of(
+                              context,
+                            ).howCanIAssistYouToday,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyLarge!
+                                .copyWith(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w800,
+                                  color: AppColors.pureWhite,
                                 ),
-                              ),
-                            ],
                           ),
-                        ),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            height: 38,
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  RouteNames.chat,
+                                );
+                              },
+                              child: Text(
+                                AppLocalizations.of(context).getStarted,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 55),
