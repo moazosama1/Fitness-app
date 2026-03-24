@@ -1,6 +1,5 @@
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
-import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dart';
 import 'package:elevate_super_fitness/domain/entites/muscle_group_details_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class ListOfUpcomingItem extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (musclesGroupDetailsById?.isLoading == true) {
-            return buildShimmerList(heightMediaQuery * 0.125, 104.w);
+            return SizedBox(height: heightMediaQuery * 0.125);
           }
           if (musclesGroupDetailsById?.errorMessage != null) {
             return Center(child: Text(musclesGroupDetailsById!.errorMessage!));

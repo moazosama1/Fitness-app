@@ -49,65 +49,65 @@ class ExplorePageBody extends StatelessWidget {
                   title: local.recommendationToDay,
                 ),
               ),
-              // SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-              // ListOfRecommendationToDay(randomMuscles: state.randomMuscles),
-              // SliverToBoxAdapter(child: SizedBox(height: 24.h)),
-              // SliverToBoxAdapter(
-              //   child: CustomExploreIdentifierList(
-              //     title: local.upcomingWorkouts,
-              //     onTap: () {
-              //       context.read<MainHomeViewModel>().doIntent(
-              //         OnBottomNavBarTappedEvent(index: 2),
-              //       );
-              //     },
-              //   ),
-              // ),
-              // SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-              // ListUpcomingWorkoutsCategory(musclesGroup: state.musclesGroup),
-              // SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-              // ListOfUpcomingItem(
-              //   musclesGroupDetailsById: state.musclesGroupDetailsById,
-              // ),
-              // SliverToBoxAdapter(child: SizedBox(height: 24.h)),
-              // SliverToBoxAdapter(
-              //   child: CustomExploreIdentifierList(
-              //     title: local.recommendationForYou,
-              //     onTap: () {
-              //       Navigator.of(context).pushNamed(RouteNames.food);
-              //     },
-              //   ),
-              // ),
-              // SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-              // ListOfRecommendationForYou(mealsCategory: state.mealsCategory),
-              // SliverToBoxAdapter(child: SizedBox(height: 24.h)),
-              // SliverToBoxAdapter(
-              //   child: CustomExploreIdentifierList(
-              //     title: local.popularTraining,
-              //     onTap: () {},
-              //   ),
-              // ),
-              // SliverToBoxAdapter(child: SizedBox(height: 8.h)),
-              // SliverToBoxAdapter(
-              //   child: LayoutBuilder(
-              //     builder: (context, constraints) {
-              //       return ConstrainedBox(
-              //         constraints: BoxConstraints(
-              //           maxHeight: heightMediaQuery * 0.2,
-              //         ),
-              //         child: ListView.separated(
-              //           key: const Key(
-              //             WidgetsKeys.kExploreScreenListPopularTrainingItemsKey,
-              //           ),
-              //           scrollDirection: Axis.horizontal,
-              //           itemBuilder: (context, index) =>
-              //               const CustomPopularTrainingItem(),
-              //           separatorBuilder: (_, _) => SizedBox(width: 16.w),
-              //           itemCount: 10,
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
+              SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+              ListOfRecommendationToDay(randomMuscles: state.randomMuscles),
+              SliverToBoxAdapter(child: SizedBox(height: 24.h)),
+              SliverToBoxAdapter(
+                child: CustomExploreIdentifierList(
+                  title: local.upcomingWorkouts,
+                  onTap: () {
+                    context.read<MainHomeViewModel>().doIntent(
+                      OnBottomNavBarTappedEvent(index: 2),
+                    );
+                  },
+                ),
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+              ListUpcomingWorkoutsCategory(musclesGroup: state.musclesGroup),
+              SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+              ListOfUpcomingItem(
+                musclesGroupDetailsById: state.musclesGroupDetailsById,
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 24.h)),
+              SliverToBoxAdapter(
+                child: CustomExploreIdentifierList(
+                  title: local.recommendationForYou,
+                  onTap: () {
+                    Navigator.of(context).pushNamed(RouteNames.food);
+                  },
+                ),
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+              ListOfRecommendationForYou(mealsCategory: state.mealsCategory),
+              SliverToBoxAdapter(child: SizedBox(height: 24.h)),
+              SliverToBoxAdapter(
+                child: CustomExploreIdentifierList(
+                  title: local.popularTraining,
+                  onTap: () {},
+                ),
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 8.h)),
+              SliverToBoxAdapter(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: heightMediaQuery * 0.2,
+                      ),
+                      child: ListView.separated(
+                        key: const Key(
+                          WidgetsKeys.kExploreScreenListPopularTrainingItemsKey,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) =>
+                            const CustomPopularTrainingItem(),
+                        separatorBuilder: (_, _) => SizedBox(width: 16.w),
+                        itemCount: 10,
+                      ),
+                    );
+                  },
+                ),
+              ),
               SliverToBoxAdapter(child: SizedBox(height: 40.h)),
             ],
           ),

@@ -7,7 +7,6 @@ import 'package:elevate_super_fitness/presentation/main_home/view_model/main_hom
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elevate_super_fitness/core/utils/screen_util.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CustomExploreHeaderInfo extends StatelessWidget {
   const CustomExploreHeaderInfo({super.key});
@@ -43,18 +42,12 @@ class CustomExploreHeaderInfo extends StatelessWidget {
             Builder(
               builder: (context) {
                 if (state.userInfo?.isLoading == true) {
-                  return Shimmer.fromColors(
-                    baseColor: Colors.white.withOpacity(0.15),
-                    highlightColor: Colors.white.withOpacity(0.35),
-                    direction: ShimmerDirection.ltr,
-                    period: const Duration(milliseconds: 1200),
-                    child: Container(
-                      width: 36.w,
-                      height: 36.h,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.12),
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
+                  return Container(
+                    width: 36.w,
+                    height: 36.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(20.r),
                     ),
                   );
                 }
@@ -83,4 +76,3 @@ class CustomExploreHeaderInfo extends StatelessWidget {
     );
   }
 }
-

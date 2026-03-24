@@ -1,5 +1,4 @@
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dart';
 import 'package:elevate_super_fitness/domain/entites/muscles_group_response_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_explore_tab_bar_item.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view_model/explore_view_model_cubit.dart';
@@ -24,7 +23,7 @@ class ListUpcomingWorkoutsCategory extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (musclesGroup?.isLoading == true) {
-            return buildShimmerCategoryItemList(heightMediaQuery);
+            return SizedBox(height: heightMediaQuery * 0.045);
           }
           if (musclesGroup?.errorMessage != null) {
             return Center(

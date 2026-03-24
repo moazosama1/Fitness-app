@@ -1,5 +1,4 @@
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dart';
 import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/domain/entites/meals_categories_response_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
@@ -16,7 +15,7 @@ class ListOfRecommendationForYou extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (mealsCategory?.isLoading == true) {
-            return buildShimmerList(heightMediaQuery * 0.15, 104.w);
+            return SizedBox(height: heightMediaQuery * 0.15);
           }
           if (mealsCategory?.errorMessage != null) {
             return Center(child: Text(mealsCategory!.errorMessage!));

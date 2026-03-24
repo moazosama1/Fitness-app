@@ -63,7 +63,6 @@ dependencies:
   auto_mappr_annotation: ^2.3.0
   readmore: ^3.0.0
   pin_code_fields: ^8.0.1
-  shimmer: ^3.0.0
   gpt_markdown: ^1.1.4
   provider: ^6.1.5+1
 

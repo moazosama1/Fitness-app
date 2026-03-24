@@ -1,6 +1,5 @@
 import 'package:elevate_super_fitness/api/models/exercise_widget_model.dart';
 import 'package:elevate_super_fitness/core/api_result/base_state.dart';
-import 'package:elevate_super_fitness/core/custom_widget/custom_shimmer_item.dart';
 import 'package:elevate_super_fitness/core/router/route_names.dart';
 import 'package:elevate_super_fitness/domain/entites/muscles_response_entity.dart';
 import 'package:elevate_super_fitness/presentation/explore_page/view/widgets/custom_recommendation_item.dart';
@@ -19,7 +18,7 @@ class ListOfRecommendationToDay extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (randomMuscles?.isLoading == true) {
-            return buildShimmerList(heightMediaQuery * 0.15, 104.w);
+            return SizedBox(height: heightMediaQuery * 0.15);
           }
           if (randomMuscles?.errorMessage != null) {
             return Center(child: Text(randomMuscles!.errorMessage!));
