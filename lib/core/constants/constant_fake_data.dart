@@ -105,27 +105,27 @@ class AppFakeData {
     MuscleEntity(
       id: 'muscle-1',
       name: 'Chest Blast',
-      image: AppDummyImage.dummyImageFitness1,
+      image: AppDummyImage.dummyImageFitness7,
     ),
     MuscleEntity(
       id: 'muscle-2',
       name: 'Shoulder Burn',
-      image: AppDummyImage.dummyImageFitness1,
+      image: AppDummyImage.dummyImageFitness7,
     ),
     MuscleEntity(
       id: 'muscle-3',
       name: 'Core Focus',
-      image: AppDummyImage.dummyImageFitness1,
+      image: AppDummyImage.dummyImageFitness7,
     ),
     MuscleEntity(
       id: 'muscle-4',
       name: 'Leg Power',
-      image: AppDummyImage.dummyImageFitness1,
+      image: AppDummyImage.dummyImageFitness7,
     ),
     MuscleEntity(
       id: 'muscle-5',
       name: 'Back Strength',
-      image: AppDummyImage.dummyImageFitness1,
+      image: AppDummyImage.dummyImageFitness7,
     ),
   ];
 
@@ -140,51 +140,51 @@ class AppFakeData {
       MuscleEntity(
         id: 'up-1',
         name: 'Upper Push',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-2',
         name: 'Lower Drive',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-3',
         name: 'Pull Builder',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
     'group-cardio': [
       MuscleEntity(
         id: 'up-4',
         name: 'HIIT Sprint',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-5',
         name: 'Tempo Run',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-6',
         name: 'Bike Rush',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
     'group-mobility': [
       MuscleEntity(
         id: 'up-7',
         name: 'Full Stretch',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-8',
         name: 'Hip Openers',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'up-9',
         name: 'Recovery Flow',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
   };
@@ -545,88 +545,88 @@ class AppFakeData {
       MuscleEntity(
         id: 'w-1',
         name: 'Upper Push',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-2',
         name: 'Back Builder',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-3',
         name: 'Leg Force',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-4',
         name: 'Core Stability',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
     'group-cardio': [
       MuscleEntity(
         id: 'w-5',
         name: 'HIIT Sprint',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-6',
         name: 'Cardio Flow',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-7',
         name: 'Fast Burn',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-8',
         name: 'Runner Mix',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
     'group-mobility': [
       MuscleEntity(
         id: 'w-9',
         name: 'Stretch Deep',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-10',
         name: 'Joint Reset',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-11',
         name: 'Recovery Flow',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-12',
         name: 'Balance Work',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
     'group-endurance': [
       MuscleEntity(
         id: 'w-13',
         name: 'Long Set',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-14',
         name: 'Tempo Circuit',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-15',
         name: 'Steady Burn',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
       MuscleEntity(
         id: 'w-16',
         name: 'Engine Build',
-        image: AppDummyImage.dummyImageFitness1,
+        image: AppDummyImage.dummyImageFitness7,
       ),
     ],
   };
