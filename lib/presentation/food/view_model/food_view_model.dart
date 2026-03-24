@@ -65,4 +65,10 @@ class FoodViewModel extends Cubit<FoodState> {
   void _changeTab(int index) {
     selectedTabIndex.value = index;
   }
+
+  @override
+  Future<void> close() {
+    selectedTabIndex.dispose();
+    return super.close();
+  }
 }

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:elevate_super_fitness/core/constants/app_colors.dart';
 import 'package:elevate_super_fitness/core/constants/app_icons.dart';
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
@@ -32,7 +30,11 @@ class MainHomeViewBody extends StatelessWidget {
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.homeBgImage),
+              image: ResizeImage(
+                AssetImage(AppImages.homeBgImage),
+                width: 828,
+                policy: ResizeImagePolicy.fit,
+              ),
               fit: BoxFit.fill,
             ),
           ),
@@ -56,69 +58,56 @@ class MainHomeViewBody extends StatelessWidget {
           bottom: 32,
           left: 32,
           right: 32,
-          child: ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(20),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-              child: Container(
-                height: 69,
-                decoration: BoxDecoration(
-                  color: AppColors.backGroundD.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, -20),
-                    ),
-                  ],
+          child: Container(
+            height: 69,
+            decoration: BoxDecoration(
+              color: AppColors.backGroundD.withOpacity(0.92),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                NavItemCustomWidget(
+                  image: AppIcons.home,
+                  label: AppLocalizations.of(context).explore,
+                  isActive: state.selectedIndex == 0,
+                  onTap: () {
+                    mainHomeViewModel.doIntent(
+                      OnBottomNavBarTappedEvent(index: 0),
+                    );
+                  },
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    NavItemCustomWidget(
-                      image: AppIcons.home,
-                      label: AppLocalizations.of(context).explore,
-                      isActive: state.selectedIndex == 0,
-                      onTap: () {
-                        mainHomeViewModel.doIntent(
-                          OnBottomNavBarTappedEvent(index: 0),
-                        );
-                      },
-                    ),
-                    NavItemCustomWidget(
-                      image: AppIcons.chatAi,
-                      label: AppLocalizations.of(context).smartCoach,
-                      isActive: state.selectedIndex == 1,
-                      onTap: () {
-                        mainHomeViewModel.doIntent(
-                          OnBottomNavBarTappedEvent(index: 1),
-                        );
-                      },
-                    ),
-                    NavItemCustomWidget(
-                      image: AppIcons.gym,
-                      label: AppLocalizations.of(context).workouts,
-                      isActive: state.selectedIndex == 2,
-                      onTap: () {
-                        mainHomeViewModel.doIntent(
-                          OnBottomNavBarTappedEvent(index: 2),
-                        );
-                      },
-                    ),
-                    NavItemCustomWidget(
-                      image: AppIcons.profile,
-                      label: AppLocalizations.of(context).profile,
-                      isActive: state.selectedIndex == 3,
-                      onTap: () {
-                        mainHomeViewModel.doIntent(
-                          OnBottomNavBarTappedEvent(index: 3),
-                        );
-                      },
-                    ),
-                  ],
+                NavItemCustomWidget(
+                  image: AppIcons.chatAi,
+                  label: AppLocalizations.of(context).smartCoach,
+                  isActive: state.selectedIndex == 1,
+                  onTap: () {
+                    mainHomeViewModel.doIntent(
+                      OnBottomNavBarTappedEvent(index: 1),
+                    );
+                  },
                 ),
-              ),
+                NavItemCustomWidget(
+                  image: AppIcons.gym,
+                  label: AppLocalizations.of(context).workouts,
+                  isActive: state.selectedIndex == 2,
+                  onTap: () {
+                    mainHomeViewModel.doIntent(
+                      OnBottomNavBarTappedEvent(index: 2),
+                    );
+                  },
+                ),
+                NavItemCustomWidget(
+                  image: AppIcons.profile,
+                  label: AppLocalizations.of(context).profile,
+                  isActive: state.selectedIndex == 3,
+                  onTap: () {
+                    mainHomeViewModel.doIntent(
+                      OnBottomNavBarTappedEvent(index: 3),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),
@@ -126,3 +115,4 @@ class MainHomeViewBody extends StatelessWidget {
     );
   }
 }
+

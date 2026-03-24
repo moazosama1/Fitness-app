@@ -107,4 +107,10 @@ class MainProfileViewModelCubit extends Cubit<MainProfileViewModelState> {
       ),
     );
   }
+
+  @override
+  Future<void> close() {
+    switcherLocal.dispose();
+    return super.close();
+  }
 }

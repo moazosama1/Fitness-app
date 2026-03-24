@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:elevate_super_fitness/core/constants/app_images.dart';
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
@@ -22,7 +21,11 @@ class CustomPopularTrainingItem extends StatelessWidget {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.authBg),
+              image: ResizeImage(
+                AssetImage(AppImages.authBg),
+                width: 400,
+                policy: ResizeImagePolicy.fit,
+              ),
               fit: BoxFit.cover,
             ),
           ),
@@ -44,48 +47,42 @@ class CustomPopularTrainingItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.r),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
-                        child: Container(
-                          color: const Color(0xFF242424).withOpacity(0.1),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 4.w,
-                              vertical: 8.h,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Push-up",
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                  color: theme.colorScheme.onSecondary,
-                                ),
-                              ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF242424).withOpacity(0.65),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4.w,
+                          vertical: 8.h,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Push-up",
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSecondary,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.r),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
-                        child: Container(
-                          color: const Color(0xFF242424).withOpacity(0.1),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 4.w,
-                              vertical: 8.h,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Push-up",
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                  color: theme.colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF242424).withOpacity(0.65),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4.w,
+                          vertical: 8.h,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Push-up",
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),

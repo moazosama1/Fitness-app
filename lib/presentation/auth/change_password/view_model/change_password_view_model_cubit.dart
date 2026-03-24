@@ -70,4 +70,12 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordViewModelState> {
         );
     }
   }
+
+  @override
+  Future<void> close() {
+    showOldPassword.dispose();
+    showNewPassword.dispose();
+    showConfirmPassword.dispose();
+    return super.close();
+  }
 }

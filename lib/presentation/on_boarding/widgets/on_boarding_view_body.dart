@@ -20,6 +20,12 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   final List<OnBoardingPageViewContentModel> onBoardingDataList = [
     OnBoardingPageViewContentModel(
       image: AppImages.onboarding1,
@@ -47,7 +53,11 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.onBoardingBgImage),
+              image: ResizeImage(
+                AssetImage(AppImages.onBoardingBgImage),
+                width: 828,
+                policy: ResizeImagePolicy.fit,
+              ),
               fit: BoxFit.cover,
             ),
           ),
@@ -70,7 +80,11 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                     height: 500.h,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(onBoardingDataList[index].image),
+                        image: ResizeImage(
+                          AssetImage(onBoardingDataList[index].image),
+                          width: 828,
+                          policy: ResizeImagePolicy.fit,
+                        ),
                         fit: BoxFit.scaleDown,
                       ),
                     ),

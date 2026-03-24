@@ -60,8 +60,12 @@ class CustomExploreHeaderInfo extends StatelessWidget {
                   child: ClipRRect(
                     key: const Key(WidgetsKeys.kExploreScreenHeaderImageKey),
                     borderRadius: BorderRadiusGeometry.circular(18.sp),
-                    child: const Image(
-                      image: AssetImage(AppDummyImage.dummyImageFitness10),
+                    child: Image(
+                      image: const ResizeImage(
+                        AssetImage(AppDummyImage.dummyImageFitness10),
+                        width: 72,
+                        height: 72,
+                      ),
                       width: 36,
                       height: 36,
                       fit: BoxFit.cover,

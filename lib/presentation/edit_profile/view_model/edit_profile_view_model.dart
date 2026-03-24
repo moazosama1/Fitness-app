@@ -171,4 +171,13 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
       orElse: () => LevelEnum.rookie,
     );
   }
+
+  @override
+  Future<void> close() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    isButtonEnabled.dispose();
+    return super.close();
+  }
 }

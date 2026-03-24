@@ -48,6 +48,8 @@ class ExerciseCard extends StatelessWidget {
               width: 80,
               height: 88,
               fit: BoxFit.cover,
+              cacheWidth: 160,
+              cacheHeight: 176,
             ),
           ),
 
@@ -113,6 +115,14 @@ class ExerciseCard extends StatelessWidget {
                           );
 
                           if (videoId != null) {
+                            final ytController = YoutubePlayerController(
+                              initialVideoId: videoId,
+                              flags: const YoutubePlayerFlags(
+                                autoPlay: true,
+                                mute: false,
+                                showLiveFullscreenButton: true,
+                              ),
+                            );
                             showDialog(
                               context: context,
                               builder: (context) {
@@ -123,14 +133,7 @@ class ExerciseCard extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                     child: YoutubePlayerBuilder(
                                       player: YoutubePlayer(
-                                        controller: YoutubePlayerController(
-                                          initialVideoId: videoId,
-                                          flags: const YoutubePlayerFlags(
-                                            autoPlay: true,
-                                            mute: false,
-                                            showLiveFullscreenButton: true,
-                                          ),
-                                        ),
+                                        controller: ytController,
                                         showVideoProgressIndicator: true,
                                         progressIndicatorColor:
                                             AppColors.mainColorL,
@@ -172,7 +175,7 @@ class ExerciseCard extends StatelessWidget {
                                   ),
                                 );
                               },
-                            );
+                            ).then((_) => ytController.dispose());
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

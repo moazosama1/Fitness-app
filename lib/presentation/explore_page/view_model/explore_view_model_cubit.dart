@@ -129,4 +129,10 @@ class ExploreViewModelCubit extends Cubit<ExploreViewModelState> {
       ),
     );
   }
+
+  @override
+  Future<void> close() {
+    selectedCategory.dispose();
+    return super.close();
+  }
 }

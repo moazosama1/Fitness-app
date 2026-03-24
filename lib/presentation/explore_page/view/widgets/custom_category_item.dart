@@ -34,7 +34,13 @@ class CustomCategoryItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 4.w),
         child: Column(
           children: [
-            Image.asset(imagePath),
+            Image.asset(
+              imagePath,
+              width: 32.w,
+              height: 32.h,
+              cacheWidth: 64,
+              fit: BoxFit.contain,
+            ),
             SizedBox(height: 4.h),
             Text(
               title,

@@ -25,7 +25,11 @@ class CustomAuthBg extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(AppImages.authBg),
+                image: ResizeImage(
+                  AssetImage(AppImages.authBg),
+                  width: 828,
+                  policy: ResizeImagePolicy.fit,
+                ),
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +53,13 @@ class CustomAuthBg extends StatelessWidget {
                       ),
                     ),
                   ),
-                Image.asset(AppImages.logoImage, width: 70.w, height: 48.h),
+                Image.asset(
+                  AppImages.logoImage,
+                  width: 70.w,
+                  height: 48.h,
+                  cacheWidth: 140,
+                  cacheHeight: 96,
+                ),
               ],
             ),
             child,

@@ -22,7 +22,11 @@ class CustomFoodBg extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(AppImages.foodBg),
+                image: ResizeImage(
+                  AssetImage(AppImages.foodBg),
+                  width: 828,
+                  policy: ResizeImagePolicy.fit,
+                ),
                 fit: BoxFit.cover,
               ),
             ),

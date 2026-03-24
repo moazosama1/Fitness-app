@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:elevate_super_fitness/core/constants/widgets_keys.dart';
 import 'package:elevate_super_fitness/core/custom_widget/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -48,32 +46,29 @@ class CustomRecommendationItem extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ClipRRect(
-                borderRadius: border
-                    ? BorderRadius.only(
-                        topLeft: Radius.circular(20.r),
-                        topRight: Radius.circular(20.r),
-                      )
-                    : BorderRadius.circular(0),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 34.6, sigmaY: 34.6),
-                  child: Container(
-                    width: double.infinity,
-                    color: const Color(0xFF242424).withOpacity(0.1),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    child: Text(
-                      title ?? "",
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSecondary,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF242424).withOpacity(0.6),
+                  borderRadius: border
+                      ? BorderRadius.only(
+                          topLeft: Radius.circular(20.r),
+                          topRight: Radius.circular(20.r),
+                        )
+                      : BorderRadius.circular(0),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: Text(
+                  title ?? "",
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSecondary,
                   ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
             ),

@@ -35,6 +35,7 @@ class FoodDetailsScreen extends StatelessWidget {
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
+                cacheWidth: 828,
               ),
             ),
             Container(
