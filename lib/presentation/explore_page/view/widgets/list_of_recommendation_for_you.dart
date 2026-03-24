@@ -31,6 +31,7 @@ class ListOfRecommendationForYou extends StatelessWidget {
                     final selectedItem =
                         mealsCategory?.data?.categories?[index];
                     return GestureDetector(
+                      key: Key("recommendation_item_$index"),
                       onTap: () {
                         Navigator.of(
                           context,
@@ -53,4 +54,3 @@ class ListOfRecommendationForYou extends StatelessWidget {
     );
   }
 }
-

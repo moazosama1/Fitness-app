@@ -34,6 +34,7 @@ class ListOfRecommendationToDay extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final selectedItem = muscles[index];
                     return GestureDetector(
+                      key: Key("recommendation_item_$index"),
                       onTap: () => Navigator.pushNamed(
                         context,
                         RouteNames.exercise,
@@ -59,4 +60,3 @@ class ListOfRecommendationToDay extends StatelessWidget {
     );
   }
 }
-

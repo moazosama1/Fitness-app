@@ -16,10 +16,7 @@ class ListOfUpcomingItem extends StatelessWidget {
       child: Builder(
         builder: (context) {
           if (musclesGroupDetailsById?.isLoading == true) {
-            return buildShimmerList(
-              heightMediaQuery * 0.125,
-              104.w,
-            );
+            return buildShimmerList(heightMediaQuery * 0.125, 104.w);
           }
           if (musclesGroupDetailsById?.errorMessage != null) {
             return Center(child: Text(musclesGroupDetailsById!.errorMessage!));
@@ -33,6 +30,7 @@ class ListOfUpcomingItem extends StatelessWidget {
                 final selectedItem =
                     musclesGroupDetailsById?.data?.musclesEntity?[index];
                 return CustomRecommendationItem(
+                  key: Key("recommendation_item_$index"),
                   border: false,
                   title: selectedItem?.name,
                   imagePath: selectedItem?.image,
@@ -48,4 +46,3 @@ class ListOfUpcomingItem extends StatelessWidget {
     );
   }
 }
-

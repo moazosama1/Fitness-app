@@ -42,6 +42,7 @@ class ListUpcomingWorkoutsCategory extends StatelessWidget {
               itemBuilder: (context, index) {
                 final selectedItem = musclesGroupList[index];
                 return GestureDetector(
+                  key: Key("recommendation_item_$index"),
                   onTap: () {
                     if (!cubit.isClosed) {
                       cubit.selectedCategory.value = index;
@@ -73,4 +74,3 @@ class ListUpcomingWorkoutsCategory extends StatelessWidget {
     );
   }
 }
-
